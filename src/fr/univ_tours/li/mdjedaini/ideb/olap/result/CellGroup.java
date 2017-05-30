@@ -86,18 +86,36 @@ public class CellGroup {
         return result;
     }
     
+    /**
+     *
+     * @return
+     */
     public CellGroup relax() {
         return this;
     }
     
+    /**
+     *
+     * @return
+     */
     public CellGroup drill() {
         return this;
     }
     
+    /**
+     *
+     * @param arg_g
+     * @return
+     */
     public boolean isSliceOf(CellGroup arg_g) {
         return false;
     }
     
+    /**
+     *
+     * @param arg_g
+     * @return
+     */
     public boolean isSwitchOf(CellGroup arg_g) {
         return false;
     }

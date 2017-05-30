@@ -225,7 +225,6 @@ public class Log {
     /**
      * Executes the queries in the log.
      * 
-     * @param arg_store
      * @return TRUE to store the results inside queries objects, FALSE otherwise.
      */
     public CellList getCellList() {

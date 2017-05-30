@@ -2,11 +2,20 @@ package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 
+/**
+ *
+ * @author Salim IGUE
+ */
 public class ProjectionFragment extends Fragment implements java.io.Serializable {
 
     // 
     private EAB_Level projectionLevel;
     
+    /**
+     *
+     * @param arg_q
+     * @param arg_level
+     */
     public ProjectionFragment(QueryTriplet arg_q, EAB_Level arg_level) {
         super();
         this.q                  = arg_q;
@@ -15,6 +24,7 @@ public class ProjectionFragment extends Fragment implements java.io.Serializable
     
     /**
      * 
+     * @param arg_q
      * @param arg_dimensionName
      * @param arg_hierarchyName
      * @param arg_levelName 
@@ -42,7 +52,7 @@ public class ProjectionFragment extends Fragment implements java.io.Serializable
     
     /**
      * 
-     * @param arg_pf
+     * @param arg_o
      * @return 
      */
     public boolean equals(Object arg_o) {

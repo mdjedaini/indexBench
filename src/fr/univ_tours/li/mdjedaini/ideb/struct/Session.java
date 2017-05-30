@@ -23,13 +23,35 @@ import java.util.Random;
 public class Session {
     
     //
+
+    /**
+     *
+     */
     public Integer sid;
+
+    /**
+     *
+     */
     public User user;
     
+    /**
+     *
+     */
     public ArrayList<Query> queryList;
+
+    /**
+     *
+     */
     public ArrayList<Long> timeBeforeQueryExecutionList;    // in milliseconds
+
+    /**
+     *
+     */
     public ArrayList<Long> timeAfterQueryExecutionList;     // in milliseconds
     
+    /**
+     *
+     */
     public Map<String, String> metadata;
     
     /**
@@ -252,6 +274,7 @@ public class Session {
     /**
      * Executes the current session queries.
      * @param arg_store true to store the results in memory, false otherwise...
+     * @return 
      */
     public List<Result> execute(Boolean arg_store) {
         List<Result> res    = new ArrayList<>();
@@ -328,7 +351,7 @@ public class Session {
     }
     
     /**
-     * @todo il faut optimiser cette fonction
+     * todo il faut optimiser cette fonction
      * le calcul des cellules d'un resultat ne doit etre fait que une seule fois
      * il faut gerer cela peut etre avec une memoire cache...
      * @return 

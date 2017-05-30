@@ -16,10 +16,29 @@ import java.util.List;
  */
 public class MetricScore {
     
+    /**
+     *
+     */
     public Metric m;
+
+    /**
+     *
+     */
     public Exploration tr;
+
+    /**
+     *
+     */
     public Double score;
+
+    /**
+     *
+     */
     public List queryScoreList;
+
+    /**
+     *
+     */
     public List<Double> computationTimeList;    // in milliseconds
 
     /**

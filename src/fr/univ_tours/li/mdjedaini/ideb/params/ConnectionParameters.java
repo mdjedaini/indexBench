@@ -33,6 +33,13 @@ public class ConnectionParameters {
     /*
     
     */
+
+    /**
+     *
+     * @param arg_filePath
+     * @return
+     */
+
     public static ConnectionParameters loadParametersFromPropertiesFile(String arg_filePath) {
         
         ConnectionParameters cp = new ConnectionParameters();

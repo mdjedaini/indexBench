@@ -25,6 +25,7 @@ public class EAB_Dimension {
     /**
      * 
      * @param arg_mondrianDimension 
+     * @param arg_cube 
      */
     public EAB_Dimension(Dimension arg_mondrianDimension, EAB_Cube arg_cube) {
         this.mondrianDimension  = arg_mondrianDimension;
@@ -58,7 +59,10 @@ public class EAB_Dimension {
         return this.mondrianDimension;
     }
 
-    
+    /**
+     *
+     * @return
+     */
     public EAB_Cube getCube() {
         return this.cube;
     }

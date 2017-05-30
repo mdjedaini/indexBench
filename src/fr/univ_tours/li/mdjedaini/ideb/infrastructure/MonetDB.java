@@ -28,6 +28,12 @@ public class MonetDB extends Database {
         }
     }
     
+    /**
+     *
+     * @param arg_cs
+     * @param arg_userName
+     * @param arg_password
+     */
     public MonetDB(String arg_cs, String arg_userName, String arg_password) {
         this();
         this.connectionString   = arg_cs;

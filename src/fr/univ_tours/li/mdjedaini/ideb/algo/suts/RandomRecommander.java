@@ -28,7 +28,15 @@ import java.util.Random;
 public class RandomRecommander implements I_SUT {
 
     //
+
+    /**
+     *
+     */
     public EAB_Cube cube;
+
+    /**
+     *
+     */
     public Log log;
     
     Integer nbMaxOfMeasures;

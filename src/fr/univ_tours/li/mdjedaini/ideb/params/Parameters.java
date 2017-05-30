@@ -12,27 +12,79 @@ package fr.univ_tours.li.mdjedaini.ideb.params;
 public class Parameters {
     
     //
+
+    /**
+     *
+     */
     public String provider = "Mondrian";
+
+    /**
+     *
+     */
     public String schemaFilePath;
     
     //
+
+    /**
+     *
+     */
     public String dbms;
+
+    /**
+     *
+     */
     public String driver;
+
+    /**
+     *
+     */
     public String host;
+
+    /**
+     *
+     */
     public String port;
+
+    /**
+     *
+     */
     public String dbName;
     
+    /**
+     *
+     */
     public String user;
+
+    /**
+     *
+     */
     public String password;
     
+    /**
+     *
+     */
     public String jdbcUrl;
     
+    /**
+     *
+     */
     public String cubeName;
     
     //
+
+    /**
+     *
+     */
     public String logFilePath;
+
+    /**
+     *
+     */
     public String mondrianConnectionString;
     
+    /**
+     *
+     */
     public Integer nbOfUsers;
     
     //
@@ -42,6 +94,11 @@ public class Parameters {
     /*
      * 
      */
+
+    /**
+     *
+     */
+
     public Parameters() {
         
         this.provider           = "Mondrian";
@@ -112,115 +169,227 @@ public class Parameters {
                 + ";JdbcPassword=" + this.password;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getProvider() {
         return provider;
     }
 
+    /**
+     *
+     * @param provider
+     */
     public void setProvider(String provider) {
         this.provider = provider;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSchemaFilePath() {
         return schemaFilePath;
     }
 
+    /**
+     *
+     * @param schemaFilePath
+     */
     public void setSchemaFilePath(String schemaFilePath) {
         this.schemaFilePath = schemaFilePath;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDbms() {
         return dbms;
     }
 
+    /**
+     *
+     * @param dbms
+     */
     public void setDbms(String dbms) {
         this.dbms = dbms;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDriver() {
         return driver;
     }
 
+    /**
+     *
+     * @param driver
+     */
     public void setDriver(String driver) {
         this.driver = driver;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHost() {
         return host;
     }
 
+    /**
+     *
+     * @param host
+     */
     public void setHost(String host) {
         this.host = host;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPort() {
         return port;
     }
 
+    /**
+     *
+     * @param port
+     */
     public void setPort(String port) {
         this.port = port;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDbName() {
         return dbName;
     }
 
+    /**
+     *
+     * @param dbName
+     */
     public void setDbName(String dbName) {
         this.dbName = dbName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUser() {
         return user;
     }
 
+    /**
+     *
+     * @param user
+     */
     public void setUser(String user) {
         this.user = user;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getJdbcUrl() {
         return jdbcUrl;
     }
 
+    /**
+     *
+     * @param jdbcUrl
+     */
     public void setJdbcUrl(String jdbcUrl) {
         this.jdbcUrl = jdbcUrl;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCubeName() {
         return cubeName;
     }
 
+    /**
+     *
+     * @param cubeName
+     */
     public void setCubeName(String cubeName) {
         this.cubeName = cubeName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLogFilePath() {
         return logFilePath;
     }
 
+    /**
+     *
+     * @param logFilePath
+     */
     public void setLogFilePath(String logFilePath) {
         this.logFilePath = logFilePath;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getMondrianConnectionString() {
         this.rebuildConnectionString();
         return mondrianConnectionString;
     }
 
+    /**
+     *
+     * @param mondrianConnectionString
+     */
     public void setMondrianConnectionString(String mondrianConnectionString) {
         this.mondrianConnectionString = mondrianConnectionString;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getNbOfUsers() {
         return nbOfUsers;
     }
 
+    /**
+     *
+     * @param nbOfUsers
+     */
     public void setNbOfUsers(Integer nbOfUsers) {
         this.nbOfUsers = nbOfUsers;
     }

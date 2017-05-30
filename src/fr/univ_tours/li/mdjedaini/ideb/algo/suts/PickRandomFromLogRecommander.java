@@ -21,10 +21,22 @@ import java.util.List;
 public class PickRandomFromLogRecommander implements I_SUT {
 
     //
+
+    /**
+     *
+     */
     public EAB_Cube cube;
+
+    /**
+     *
+     */
     public Log log;
     
     // task bundle
+
+    /**
+     *
+     */
     public TaskBundle tb;
     
     /**

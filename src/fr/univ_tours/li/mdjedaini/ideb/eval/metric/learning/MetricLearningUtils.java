@@ -225,6 +225,8 @@ public class MetricLearningUtils extends Metric {
      * 
      * @param arg_tr
      * @param arg_ad
+     * @param arg_successList
+     * @param arg_params
      * @return 
      */
     public static List<Double> computePliList(Exploration arg_tr, AbstractDiscovery arg_ad, List<Boolean> arg_successList, Map<String, Double> arg_params) {

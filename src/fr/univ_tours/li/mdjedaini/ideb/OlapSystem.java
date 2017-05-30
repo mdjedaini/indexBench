@@ -55,7 +55,6 @@ public class OlapSystem {
     
     /**
      * 
-     * @return 
      */
     public void computeUserLogsListByUser() {
         
@@ -114,6 +113,7 @@ public class OlapSystem {
     /**
      * 
      * @param arg_uid 
+     * @return  
      */
     public User getUserById(Integer arg_uid) {
         
@@ -243,14 +243,26 @@ public class OlapSystem {
         this.internalCubeList.put(arg_ic.getName(), arg_ic);
     }
 
+    /**
+     *
+     * @return
+     */
     public CellList getCellList() {
         return cellList;
     }
 
+    /**
+     *
+     * @param cellList
+     */
     public void setCellList(CellList cellList) {
         this.cellList = cellList;
     }
 
+    /**
+     *
+     * @return
+     */
     public BenchmarkEngine getBenchmarkEngine() {
         return benchmarkEngine;
     }

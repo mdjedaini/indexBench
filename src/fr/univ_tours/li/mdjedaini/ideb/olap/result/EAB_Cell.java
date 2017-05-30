@@ -36,19 +36,37 @@ public class EAB_Cell {
     mondrian.olap.Cell mondrianCell;
     org.olap4j.Cell olap4jCell;
     
+    /**
+     *
+     */
     public static Integer cidIterator  = 0;
     
     //
+
+    /**
+     *
+     */
     public Integer cellId;
     Result result;
     
     // cell data
+
+    /**
+     *
+     */
     public EAB_Measure measure;
+
+    /**
+     *
+     */
     public Map<EAB_Hierarchy, EAB_Member> memberByHierarchy;
     
     // value of the cell
     Object value;
     
+    /**
+     *
+     */
     public EAB_Cell() {
         this.cellId     = EAB_Cell.cidIterator;
         EAB_Cell.cidIterator++;
@@ -190,7 +208,6 @@ public class EAB_Cell {
     /**
      * 
      * @param arg_c
-     * @param arg_h
      * @return 
      */
     public Boolean isDirectChildOfCell(EAB_Cell arg_c) {
@@ -338,7 +355,6 @@ public class EAB_Cell {
     
     /**
      * 
-     * @return 
      */
     public void computeValue() {
         
@@ -389,7 +405,7 @@ public class EAB_Cell {
     /**
      * 
      * @param arg_hierarchy
-     * @return 
+     * @param arg_member 
      */
     public void setMemberForHierarchy(EAB_Hierarchy arg_hierarchy, EAB_Member arg_member) {
         this.memberByHierarchy.put(arg_hierarchy, arg_member);
@@ -463,7 +479,7 @@ public class EAB_Cell {
     }
     
     /**
-     * @todo
+     * todo
      * @return 
      */
     public String stringHash() {
@@ -569,7 +585,6 @@ public class EAB_Cell {
     
     /**
      * 
-     * @return 
      */
 //    public int hashCode() {
 //        int hash    = 7;
@@ -583,6 +598,9 @@ public class EAB_Cell {
     
     public static class Comparators {
 
+        /**
+         *
+         */
         public static Comparator<EAB_Cell> VALUE = new Comparator<EAB_Cell>() {
             @Override
             public int compare(EAB_Cell arg_c1, EAB_Cell arg_c2) {

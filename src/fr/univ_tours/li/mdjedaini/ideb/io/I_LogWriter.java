@@ -15,8 +15,9 @@ public interface I_LogWriter {
     
     /**
      * Writes a log to a file of a given path.
-     * @param arg_log
-     * @param arg_filePath
+     * @param arg_inFile
+     * @param arg_outFilePath
+     * @param arg_xslFilePath
      * @return 
      */
     public String writeLog(String arg_inFile, String arg_outFilePath, String arg_xslFilePath);

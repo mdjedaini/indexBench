@@ -25,10 +25,17 @@ import java.util.Set;
  */
 public class ResultWriter implements I_ResultWriter {
 
+    /**
+     *
+     */
     public Result r;
     
     Map<EAB_Hierarchy, String> hierarchyToLineOrColumn;
     
+    /**
+     *
+     * @param arg_r
+     */
     public ResultWriter(Result arg_r) {
         this.r                          = arg_r;
         this.hierarchyToLineOrColumn    = new HashMap<>();

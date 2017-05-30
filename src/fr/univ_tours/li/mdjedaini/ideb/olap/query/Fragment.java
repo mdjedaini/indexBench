@@ -18,6 +18,10 @@ public abstract class Fragment {
     public Fragment() {
     }
 
+    /**
+     *
+     * @return
+     */
     public QueryTriplet getQuery() {
         return this.q;
     }

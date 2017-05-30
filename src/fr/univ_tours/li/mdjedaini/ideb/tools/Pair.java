@@ -11,6 +11,8 @@ import java.util.Map;
 /**
  *
  * @author mahfoud
+ * @param <K>
+ * @param <V>
  */
 public class Pair<K, V> {
     

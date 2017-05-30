@@ -25,17 +25,51 @@ public class CubeloadGenerator implements I_LogGenerator {
     
     BenchmarkEngine be;
             
+    /**
+     *
+     */
     public String schemaFilePath;
+
+    /**
+     *
+     */
     public String profileFilePath;
+
+    /**
+     *
+     */
     public String dataDirectoryPath;
     
+    /**
+     *
+     */
     public String cubeName;
     
     // todo try to add profile parameters here instead of having them in a file...
+
+    /**
+     *
+     */
     public Integer numberOfProfiles; // Number of profiles to be generated.
+
+    /**
+     *
+     */
     public Integer maxMeasures; // Maximum number of measures in a query
+
+    /**
+     *
+     */
     public Integer minReportSize; // Minimum size of the report for starting queries.
+
+    /**
+     *
+     */
     public Integer maxReportSize; // Maximum size of the report for starting queries.
+
+    /**
+     *
+     */
     public Integer numberOfSurprisingQueries; // Number of surprising queries.
 
     /**

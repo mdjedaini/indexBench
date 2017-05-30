@@ -38,20 +38,67 @@ public class EAB_Cube {
     String name;
     
     // structure du cube
+
+    /**
+     *
+     */
     public List<EAB_Measure> cubeMeasureListOrdered;    // important for classifying measures (ex: default measure is first)
+
+    /**
+     *
+     */
     public Map<String, EAB_Measure> cubeMeasureList;
+
+    /**
+     *
+     */
     public Map<String, EAB_Dimension> cubeDimensionList;
+
+    /**
+     *
+     */
     public Map<String, EAB_Hierarchy> cubeHierarchyList;
+
+    /**
+     *
+     */
     public Map<String, EAB_Level> cubeLevelList;
+
+    /**
+     *
+     */
     public Map<EAB_Level, Map<String, EAB_Member>> cubeMemberList;
     
     // mapping mondrian | my own classes
+
+    /**
+     *
+     */
     public Map<Member, EAB_Measure> measureMapping;
+
+    /**
+     *
+     */
     public Map<Dimension, EAB_Dimension> dimensionMapping;
+
+    /**
+     *
+     */
     public Map<Hierarchy, EAB_Hierarchy> hierarchyMapping;
+
+    /**
+     *
+     */
     public Map<Level, EAB_Level> levelMapping;
+
+    /**
+     *
+     */
     public Map<Member, EAB_Member> memberMapping;
     
+    /**
+     *
+     */
     public Map<EAB_Hierarchy, EAB_MemberTree> cubeMemberTree;
     
     //
@@ -184,6 +231,10 @@ public class EAB_Cube {
 //        }
     }
     
+    /**
+     *
+     * @return
+     */
     public SchemaReader getSchemaReader() {
         return this.mondrianCube.getSchemaReader(null).withLocus();
     }
@@ -352,7 +403,7 @@ public class EAB_Cube {
     
     /**
      * Provides a random hierarchy from the cube.
-     * @todo possibilites d'ameliorations...
+     * todo possibilites d'ameliorations...
      * @return 
      */
     public EAB_Hierarchy getRandomHierarchy() {

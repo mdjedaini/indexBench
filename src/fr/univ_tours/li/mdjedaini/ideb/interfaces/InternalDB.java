@@ -11,6 +11,10 @@ package fr.univ_tours.li.mdjedaini.ideb.interfaces;
  */
 public class InternalDB {
     
+    /**
+     *
+     * @param arg_q
+     */
     public void executeQuery(String arg_q) {
         
     }

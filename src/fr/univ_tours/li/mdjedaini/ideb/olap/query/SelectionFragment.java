@@ -4,6 +4,10 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Member;
 import java.util.Objects;
 
+/**
+ *
+ * @author Salim IGUE
+ */
 public class SelectionFragment extends Fragment {
 
     /**
@@ -15,7 +19,7 @@ public class SelectionFragment extends Fragment {
    
     /**
      * 
-     * @param arg_level
+     * @param arg_q
      * @param arg_value 
      */
     public SelectionFragment(QueryTriplet arg_q, EAB_Member arg_value) {
@@ -26,6 +30,7 @@ public class SelectionFragment extends Fragment {
     
     /**
      * 
+     * @param arg_q
      * @param arg_dimensionName
      * @param arg_hierarchyName
      * @param arg_levelName
@@ -37,14 +42,26 @@ public class SelectionFragment extends Fragment {
         this.value  = this.getQuery().getCube().cubeMemberList.get(this.level).get(arg_selectionValue);
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDimensionName() {
         return this.level.getHierarchy().getDimension().getUniqueName();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getHierarchyName() {
         return this.level.getHierarchy().getUniqueName();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLevelName() {
         return this.level.getName();
     }
@@ -53,10 +70,18 @@ public class SelectionFragment extends Fragment {
 //        return selectionValue;
 //    }
     
+    /**
+     *
+     * @return
+     */
     public EAB_Level getLevel() {
         return this.level;
     }
     
+    /**
+     *
+     * @return
+     */
     public EAB_Member getMemberValue() {
         return this.value;
     }

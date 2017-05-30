@@ -16,6 +16,12 @@ public interface I_LogLoader {
     /*
     Load the log
     */
+
+    /**
+     *
+     * @return
+     */
+
     public Log loadLog();
     
 }

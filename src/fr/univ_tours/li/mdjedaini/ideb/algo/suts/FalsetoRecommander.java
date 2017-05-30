@@ -40,6 +40,10 @@ public class FalsetoRecommander implements I_SUT {
     
     FalsetoRecommenderSys falsetosut;
     
+    /**
+     *
+     * @param percentage
+     */
     public FalsetoRecommander(double percentage) {
         this.percentage         = percentage;
         set_querysession_log    = new HashSet<>();

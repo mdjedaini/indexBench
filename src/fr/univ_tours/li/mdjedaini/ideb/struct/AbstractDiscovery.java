@@ -14,6 +14,9 @@ public abstract class AbstractDiscovery {
     //
     private static Integer didCounter   = 0;
     
+    /**
+     *
+     */
     public Integer did;
     
     /**
@@ -41,6 +44,10 @@ public abstract class AbstractDiscovery {
         return did;
     }
     
+    /**
+     *
+     * @return
+     */
     public abstract CellList getCellList();
     
 //    public abstract Double similarity(AbstractDiscovery arg_ad);

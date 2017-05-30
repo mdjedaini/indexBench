@@ -21,6 +21,9 @@ public class SimpleResultWriter implements I_ResultWriter {
 
     Result r;
     
+    /**
+     *
+     */
     public SimpleResultWriter() {
     }
     

@@ -11,6 +11,10 @@ package fr.univ_tours.li.mdjedaini.ideb.struct;
  */
 public interface I_Discovery {
     
+    /**
+     *
+     * @return
+     */
     public CellList getCellList();
     
 }

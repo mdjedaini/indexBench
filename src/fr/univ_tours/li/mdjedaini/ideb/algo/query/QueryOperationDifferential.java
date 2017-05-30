@@ -36,7 +36,7 @@ public class QueryOperationDifferential {
     
     /**
      * Computes the edition distance between two olap queries.
-     * @todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
+     * todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
      * @param arg_q1
      * @param arg_q2
      * @return 
@@ -59,7 +59,7 @@ public class QueryOperationDifferential {
     
     /**
      * Computes the edition distance between two olap queries.
-     * @todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
+     * todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
      * @param arg_q1
      * @param arg_q2
      * @return 
@@ -82,7 +82,7 @@ public class QueryOperationDifferential {
     
     /**
      * Computes the edition distance between two olap queries.
-     * @todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
+     * todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
      * @param arg_q1
      * @param arg_q2
      * @return 
@@ -106,7 +106,7 @@ public class QueryOperationDifferential {
     
     /**
      * Computes the edition distance between two olap queries.
-     * @todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
+     * todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
      * @param arg_q1
      * @param arg_q2
      * @return 
@@ -129,7 +129,7 @@ public class QueryOperationDifferential {
     
     /**
      * Computes the edition distance between two olap queries.
-     * @todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
+     * todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
      * @param arg_q1
      * @param arg_q2
      * @return 
@@ -159,7 +159,7 @@ public class QueryOperationDifferential {
     
     /**
      * Computes the edition distance between two olap queries.
-     * @todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
+     * todo est-ce que les requetes doivent etre sur le meme cube? oui je pense...
      * @param arg_q1
      * @param arg_q2
      * @return 

@@ -19,13 +19,37 @@ import java.util.Map;
 public class ExplorationScore {
     
     //
+
+    /**
+     *
+     */
     public Exploration exploration;
+
+    /**
+     *
+     */
     public I_ExplorationScorer explorationScorer;
     
     //
+
+    /**
+     *
+     */
     public Map<Metric, Double> explorationScorePerMetric;
+
+    /**
+     *
+     */
     public Map<Metric, List<Double>> metricToQueryScoreList;
+
+    /**
+     *
+     */
     public Map<Metric, List<Double>> metricToComputationTimeList;
+
+    /**
+     *
+     */
     public List<Map<Metric, Double>> queryToMetricScoreList;
     
     /**
@@ -131,6 +155,10 @@ public class ExplorationScore {
         return this.metricToQueryScoreList;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Map<Metric, Double>> getQueryToMetricScoreList() {
         return this.queryToMetricScoreList;
     }

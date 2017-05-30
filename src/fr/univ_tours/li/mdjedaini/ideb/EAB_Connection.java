@@ -8,7 +8,7 @@ import org.olap4j.OlapConnection;
 
 
 /**
- * @todo CHANGER TOUT CA, PASSER A OLAP4J POUR RENDRE LE CODE + MODULAIRE...
+ * todo CHANGER TOUT CA, PASSER A OLAP4J POUR RENDRE LE CODE + MODULAIRE...
  * @author mahfoud
  */
 public class EAB_Connection {
@@ -54,6 +54,10 @@ public class EAB_Connection {
         
     }
     
+    /**
+     *
+     * @return
+     */
     public BenchmarkEngine getBenchmarkEngine() {
         return this.be;
     }
@@ -77,7 +81,6 @@ public class EAB_Connection {
     /**
      * Retrieves the cube by its name.
      * 
-     * @param arg_cubeName
      * @return 
      */
     public Cube getDefaultCube() {

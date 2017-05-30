@@ -14,8 +14,19 @@ import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
  */
 public class FocusZone {
     
+    /**
+     *
+     */
     public Exploration exp;
+
+    /**
+     *
+     */
     public Integer startPosition;
+
+    /**
+     *
+     */
     public Integer endPosition;
     CellList cellList;
     

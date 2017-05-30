@@ -29,6 +29,7 @@ public class EAB_Level {
     /**
      * 
      * @param arg_mondrianLevel 
+     * @param arg_hierarchy 
      */
     public EAB_Level(Level arg_mondrianLevel, EAB_Hierarchy arg_hierarchy) {
         this.mondrianLevel  = arg_mondrianLevel;
@@ -141,14 +142,26 @@ public class EAB_Level {
         return hierarchy;
     }
     
+    /**
+     *
+     * @return
+     */
     public EAB_Cube getCube() {
         return this.getHierarchy().getDimension().getCube();
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUniqueName() {
         return uniqueName;
     }

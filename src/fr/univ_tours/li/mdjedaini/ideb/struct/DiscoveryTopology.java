@@ -20,6 +20,10 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 public class DiscoveryTopology {
     
     // jung graph
+
+    /**
+     *
+     */
     public Graph g;
 
     /**
@@ -59,7 +63,7 @@ public class DiscoveryTopology {
     
     /**
      * 
-     * @param arg_g 
+     * @param arg_c
      */
     public void addCell(EAB_Cell arg_c) {
         

@@ -146,6 +146,7 @@ public class ExplorationStatistics {
      * Computes the manifold query.
      * 
      * @param arg_exp 
+     * @return  
      */
     public Query computeManifoldQuery(List<Query> arg_exp) {
         EAB_Cube cube       = arg_exp.get(0).getCube();
@@ -241,6 +242,7 @@ public class ExplorationStatistics {
      * Computes the manifold query.
      * 
      * @param arg_exp 
+     * @return  
      */
     public Query computeCoveringQuery(List<Query> arg_exp) {
         EAB_Cube cube       = arg_exp.get(0).getCube();

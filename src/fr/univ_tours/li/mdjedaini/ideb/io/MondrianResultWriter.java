@@ -21,6 +21,9 @@ public class MondrianResultWriter implements I_ResultWriter {
 
     Result r;
     
+    /**
+     *
+     */
     public MondrianResultWriter() {
     }
     

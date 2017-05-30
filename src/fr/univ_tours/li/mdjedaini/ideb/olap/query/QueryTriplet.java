@@ -28,8 +28,20 @@ import org.olap4j.layout.RectangularCellSetFormatter;
 public class QueryTriplet extends Query implements java.io.Serializable {
 
     //
+
+    /**
+     *
+     */
     protected Set<MeasureFragment> measureList;
+
+    /**
+     *
+     */
     protected Set<ProjectionFragment> projectionList;
+
+    /**
+     *
+     */
     protected Set<SelectionFragment> selectionList;
     
     Query originalQuery;    // original query, before query conversion (often a mdx query)
@@ -94,10 +106,18 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Query getOriginalQuery() {
         return originalQuery;
     }
 
+    /**
+     *
+     * @param originalQuery
+     */
     public void setOriginalQuery(Query originalQuery) {
         this.originalQuery = originalQuery;
     }
@@ -329,7 +349,7 @@ public class QueryTriplet extends Query implements java.io.Serializable {
     
     /**
      * 
-     * @param arg_hierarchyName
+     * @param arg_hierarchy
      * @return 
      */
     public Set<SelectionFragment> getSelectionFragmentByHierarchy(EAB_Hierarchy arg_hierarchy) {

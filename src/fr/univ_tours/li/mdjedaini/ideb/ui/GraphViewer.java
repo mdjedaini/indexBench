@@ -23,13 +23,21 @@ import org.apache.commons.collections15.Transformer;
 /**
  *
  * @author mahfoud
+ * @param <V>
+ * @param <E>
  */
 public class GraphViewer<V,E> {
 
+    /**
+     *
+     */
     public GraphViewer() {
     }
     
-    
+    /**
+     *
+     * @param arg_graph
+     */
     public void viewGraph(Graph<V,E> arg_graph) {
         Dimension dim   = new Dimension(1200, 950);
         

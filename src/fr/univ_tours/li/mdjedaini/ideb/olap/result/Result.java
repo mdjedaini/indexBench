@@ -28,6 +28,10 @@ public class Result {
     // I need this mapping for printing cell ID when displaying result
     // The key represents the list of coordinates of the cell
     // I do this because I do not have any comparator for the Cell class provided by Mondrian, so I cannot use the key for retrieving value
+
+    /**
+     *
+     */
     public Map<List<Integer>, EAB_Cell> cellMapping;
     
     CellList cellList;

@@ -16,6 +16,9 @@ public abstract class Query {
     
     mondrian.olap.Query mondrianQuery;  // mondrian Query object
     
+    /**
+     *
+     */
     public EAB_Cube cube;
 
     Integer qid;        // id of the query
@@ -23,14 +26,26 @@ public abstract class Query {
     
     Result result;      // associated result
     
+    /**
+     *
+     * @param arg_cube
+     */
     public Query(EAB_Cube arg_cube) {
         this.cube   = arg_cube;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getPosition() {
         return position;
     }
 
+    /**
+     *
+     * @param position
+     */
     public void setPosition(Integer position) {
         this.position = position;
     }

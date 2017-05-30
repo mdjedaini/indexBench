@@ -20,7 +20,14 @@ public class SUTScorer implements I_SUTScorer {
     
     BenchmarkEngine benchmarkEngine;
     
+    /**
+     *
+     */
     public ExplorationScorer es;
+
+    /**
+     *
+     */
     public List<Metric> metricList;
     
     /**

@@ -127,7 +127,10 @@ public class EAB_Hierarchy {
         return this.getCube().getLevelByMondrianLevel(l);
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public EAB_Member getAllMember() {
         return this.getCube().memberMapping.get(this.mondrianHierarchy.getAllMember());
     }

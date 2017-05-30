@@ -24,6 +24,7 @@ public class RealUser extends UserModel {
     
     /**
      * 
+     * @param arg_user
      */
     public RealUser(User arg_user) {
         super(arg_user);

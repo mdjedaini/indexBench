@@ -23,7 +23,7 @@ public class IPF_Query {
     
     /**
      * Computes an expected distribution for the given query
-     * @param arg_be
+     * @param arg_tr
      * @param arg_q
      * @return 
      */

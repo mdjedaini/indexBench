@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @todo
+ * todo
  * Evaluator must not contain scoring tasks.
  * Evaluator should only contain the logic of the evaluation protocol.
  * It should take as input a SUT, the data and evaluate the SUT against a protocol.
@@ -363,18 +363,34 @@ public class SUT_Evaluator implements I_Evaluator {
         this.benchmarkEngine    = arg_benchmarkEngine;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getNumberOfTasks() {
         return numberOfTasks;
     }
 
+    /**
+     *
+     * @param numberOfTasks
+     */
     public void setNumberOfTasks(Integer numberOfTasks) {
         this.numberOfTasks = numberOfTasks;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getNumberOfChances() {
         return numberOfChances;
     }
 
+    /**
+     *
+     * @param numberOfChances
+     */
     public void setNumberOfChances(Integer numberOfChances) {
         this.numberOfChances = numberOfChances;
     }

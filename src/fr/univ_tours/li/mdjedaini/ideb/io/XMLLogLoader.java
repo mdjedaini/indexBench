@@ -115,6 +115,7 @@ public class XMLLogLoader implements I_LogLoader {
     /**
      * 
      * @param arg_sessionElement Element tag in the XML file
+     * @return 
      */
     public Session loadSession(Element arg_sessionElement) {
         

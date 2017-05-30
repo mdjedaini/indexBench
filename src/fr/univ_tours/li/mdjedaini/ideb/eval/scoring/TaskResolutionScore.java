@@ -14,6 +14,10 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.TaskResolution;
 public class TaskResolutionScore extends ExplorationScore {
     
     //
+
+    /**
+     *
+     */
     public TaskResolution taskResolution;
     
     /**

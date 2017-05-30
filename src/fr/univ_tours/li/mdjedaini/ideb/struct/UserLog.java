@@ -6,7 +6,7 @@
 package fr.univ_tours.li.mdjedaini.ideb.struct;
 
 /**
- * @todo enlever le user log, ça ne sert à rien je crois...
+ * todo enlever le user log, ça ne sert à rien je crois...
  * @author mahfoud
  */
 public class UserLog extends Log {

@@ -18,10 +18,22 @@ import java.util.List;
 public class SUT_UserModel implements I_SUT {
 
     //
+
+    /**
+     *
+     */
     public EAB_Cube cube;
+
+    /**
+     *
+     */
     public Log log;
     
     // task bundle
+
+    /**
+     *
+     */
     public TaskBundle tb;
     
     /**

@@ -27,11 +27,27 @@ public class SutResolutionScore {
     
     //
     I_SUT sut;
+
+    /**
+     *
+     */
     public SUTResolution sutResolution;
+
+    /**
+     *
+     */
     public SUTScorer sutScorer;
     
 //    public Map<TaskResolution, TaskResolutionScore> taskResolutionToScore;
+
+    /**
+     *
+     */
     public Map<Task, TaskResolutionScore> taskToScore;
+
+    /**
+     *
+     */
     public Map<Metric, Double> metricToScore;
     
     /**
@@ -189,30 +205,58 @@ public class SutResolutionScore {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public I_SUT getSut() {
         return sut;
     }
 
+    /**
+     *
+     * @param sut
+     */
     public void setSut(I_SUT sut) {
         this.sut = sut;
     }
 
+    /**
+     *
+     * @return
+     */
     public SUTResolution getSutResolution() {
         return sutResolution;
     }
 
+    /**
+     *
+     * @param sutResolution
+     */
     public void setSutResolution(SUTResolution sutResolution) {
         this.sutResolution = sutResolution;
     }
 
+    /**
+     *
+     * @return
+     */
     public SUTScorer getSutScorer() {
         return sutScorer;
     }
 
+    /**
+     *
+     * @param sutScorer
+     */
     public void setSutScorer(SUTScorer sutScorer) {
         this.sutScorer = sutScorer;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<TaskResolutionScore> getTaskResolutionScoreList() {
         return new ArrayList<>(this.taskToScore.values());
     }

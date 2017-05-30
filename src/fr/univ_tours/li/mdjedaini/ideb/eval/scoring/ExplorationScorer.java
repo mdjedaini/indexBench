@@ -36,6 +36,9 @@ public class ExplorationScorer implements I_ExplorationScorer {
     Map<AbstractDiscovery, AbstractDiscovery> initialTargetDiscoveryToDiscovery;
     Map<AbstractDiscovery, AbstractDiscovery> discoveryToInitialTargetDiscovery;
     
+    /**
+     *
+     */
     public String computationTime  = "Metric name; Time; Number of queries";
     
     I_FocusDetector focusDetection;

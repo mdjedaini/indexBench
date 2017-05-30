@@ -18,11 +18,25 @@ public abstract class Metric {
     // Metric identifier
     Integer mid;
     
+    /**
+     *
+     */
     protected String name;
+
+    /**
+     *
+     */
     protected String description;
     
+    /**
+     *
+     */
     protected BenchmarkEngine benchmarkEngine;
     
+    /**
+     *
+     * @param arg_be
+     */
     public Metric(BenchmarkEngine arg_be) {
         this.benchmarkEngine    = arg_be;
         //arg_be.registerMetric(this.getClass());

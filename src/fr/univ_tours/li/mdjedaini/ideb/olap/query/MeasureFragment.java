@@ -3,6 +3,10 @@ package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
 import java.util.Objects;
 
+/**
+ *
+ * @author Salim IGUE
+ */
 public class MeasureFragment extends Fragment implements java.io.Serializable {
 
     /**
@@ -38,6 +42,10 @@ public class MeasureFragment extends Fragment implements java.io.Serializable {
         return this.measure.getUniqueName();
     }
 
+    /**
+     *
+     * @return
+     */
     public EAB_Measure getMeasure() {
         return measure;
     }

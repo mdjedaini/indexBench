@@ -23,6 +23,11 @@ public class EAB_Measure {
     String name;
     String uniqueName;
     
+    /**
+     *
+     * @param arg_mondrianMeasure
+     * @param arg_level
+     */
     public EAB_Measure(Member arg_mondrianMeasure, EAB_Level arg_level) {
         this.mondrianMeasure    = arg_mondrianMeasure;
         this.level              = arg_level;
@@ -30,6 +35,10 @@ public class EAB_Measure {
         this.uniqueName         = this.mondrianMeasure.getUniqueName();
     }
     
+    /**
+     *
+     * @return
+     */
     public EAB_Cube getCube() {
         return this.getLevel().getCube();
     }
@@ -42,18 +51,34 @@ public class EAB_Measure {
         return this.level;
     }
     
+    /**
+     *
+     * @return
+     */
     public EAB_Hierarchy getHierarchy() {
         return this.getLevel().getHierarchy();
     } 
     
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getUniqueName() {
         return this.uniqueName;
     }
  
+    /**
+     *
+     * @return
+     */
     public Member getMondrianMeasure() {
         return this.mondrianMeasure;
     }

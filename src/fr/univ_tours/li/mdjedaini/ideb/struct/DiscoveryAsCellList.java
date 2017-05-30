@@ -15,6 +15,10 @@ import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 public class DiscoveryAsCellList extends AbstractDiscovery {
     
     // 
+
+    /**
+     *
+     */
     public DiscoveryTopology dt;
     CellList cellList;
     
@@ -80,6 +84,7 @@ public class DiscoveryAsCellList extends AbstractDiscovery {
     /**
      * 
      * @param arg_c 
+     * @return  
      */
     public boolean contains(EAB_Cell arg_c) {
         for(Object o_tmp : this.dt.g.getVertices()) {

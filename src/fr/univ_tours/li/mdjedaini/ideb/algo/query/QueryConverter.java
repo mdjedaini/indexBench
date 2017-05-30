@@ -158,7 +158,7 @@ public class QueryConverter {
 //    }
 
     /**
-     * @todo to write
+     * todo to write
      * @param arg_q
      * @return 
      */
@@ -260,7 +260,7 @@ public class QueryConverter {
     
      
      /**
-     * @todo to write
+     * todo to write
      * @param arg_q
      * @return 
      */

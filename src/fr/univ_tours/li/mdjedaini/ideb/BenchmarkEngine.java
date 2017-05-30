@@ -52,6 +52,10 @@ public class BenchmarkEngine {
     private static Set<Class<? extends I_SUT>> registeredSUTs       = new HashSet<>();
     
     //
+
+    /**
+     *
+     */
     public Parameters parameters;
     OlapSystem benchmarkData;
     
@@ -259,8 +263,7 @@ public class BenchmarkEngine {
     }
     
     /**
-     * Create discoveries in the current log.
-     * @return 
+     * Create discoveries in the current log. 
      */
     public void createDiscoveryListByUser() {
         
@@ -359,26 +362,50 @@ public class BenchmarkEngine {
         return this.getBenchmarkData().getSchemaReader();
     }
     
+    /**
+     *
+     * @return
+     */
     public EAB_Connection getConnection() {
         return this.benchmarkData.getConnection();
     }
     
+    /**
+     *
+     * @return
+     */
     public CellList getCellList() {
         return this.benchmarkData.getCellList();
     }
     
+    /**
+     *
+     * @return
+     */
     public I_SUTScorer getSUTScorer() {
         return this.sutScorer;
     }
     
+    /**
+     *
+     * @return
+     */
     public Set<Class<? extends Metric>> getRegisteredMetrics() {
         return BenchmarkEngine.registeredMetrics;
     }
     
+    /**
+     *
+     * @return
+     */
     public Set<Class<? extends I_SUT>> getRegisteredSUTs() {
         return BenchmarkEngine.registeredSUTs;
     }
     
+    /**
+     *
+     * @return
+     */
     public Parameters getParameters() {
         return parameters;
     }
@@ -402,34 +429,66 @@ public class BenchmarkEngine {
         this.benchmarkData.getConnection().open();
     }
 
+    /**
+     *
+     * @return
+     */
     public I_SessionClusteringAlgorithm getI_sca() {
         return i_sca;
     }
 
+    /**
+     *
+     * @param i_sca
+     */
     public void setI_sca(I_SessionClusteringAlgorithm i_sca) {
         this.i_sca = i_sca;
     }
 
+    /**
+     *
+     * @return
+     */
     public I_SessionSimilarity getSessionSimilarity() {
         return i_ss;
     }
 
+    /**
+     *
+     * @param i_ss
+     */
     public void setSessionSimilarity(I_SessionSimilarity i_ss) {
         this.i_ss = i_ss;
     }
 
+    /**
+     *
+     * @return
+     */
     public I_UserSimulator getUserSimulator() {
         return i_us;
     }
 
+    /**
+     *
+     * @param i_us
+     */
     public void setUserSimultor(I_UserSimulator i_us) {
         this.i_us = i_us;
     }
 
+    /**
+     *
+     * @return
+     */
     public SUT_Evaluator getEvaluator() {
         return evaluator;
     }
 
+    /**
+     *
+     * @return
+     */
     public I_FocusDetector getFocusDetector() {
         return this.i_focusDetector;
     }
@@ -450,27 +509,50 @@ public class BenchmarkEngine {
         BenchmarkEngine.registeredSUTs.add(arg_class);
     }
     
-    
+    /**
+     *
+     * @param evaluator
+     */
     public void setEvaluator(SUT_Evaluator evaluator) {
         this.evaluator = evaluator;
     }
 
+    /**
+     *
+     * @param i_focusDetector
+     */
     public void setFocusDetector(I_FocusDetector i_focusDetector) {
         this.i_focusDetector = i_focusDetector;
     }
     
+    /**
+     *
+     * @return
+     */
     public I_SUTScorer getSutScorer() {
         return sutScorer;
     }
 
+    /**
+     *
+     * @param sutScorer
+     */
     public void setSutScorer(I_SUTScorer sutScorer) {
         this.sutScorer = sutScorer;
     }
 
+    /**
+     *
+     * @return
+     */
     public I_LogLoader getLogLoader() {
         return i_logLoader;
     }
 
+    /**
+     *
+     * @param i_logLoader
+     */
     public void setLogLoader(I_LogLoader i_logLoader) {
         this.i_logLoader = i_logLoader;
     }

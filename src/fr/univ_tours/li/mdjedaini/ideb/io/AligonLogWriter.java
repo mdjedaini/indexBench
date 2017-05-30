@@ -27,8 +27,9 @@ public class AligonLogWriter implements I_LogWriter {
 
     /**
      * 
-     * @param arg_log
-     * @param arg_filePath
+     * @param arg_inFilePath
+     * @param arg_outFilePath
+     * @param arg_xslFilePath
      * @return 
      */
     @Override

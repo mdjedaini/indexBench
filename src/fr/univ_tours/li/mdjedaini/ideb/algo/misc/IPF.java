@@ -3,69 +3,176 @@ package fr.univ_tours.li.mdjedaini.ideb.algo.misc;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author Salim IGUE
+ */
 public class IPF {
 
-	public static List<String> attCommunes = new ArrayList<>();
-	public static List<Double> valCommunes = new ArrayList<>();
-	public static List<String> attCspAct = new ArrayList<>();
-	public static List<Double> valCspAct = new ArrayList<>();
-	public static List<String> attDiplome = new ArrayList<>();
-	public static List<Double> valDiplome = new ArrayList<>();
-	public static List<String> attTaille = new ArrayList<>();
-	public static List<Double> valTaille = new ArrayList<>();
-	public static List<String> attTypeAge = new ArrayList<>();
-	public static List<Double> valTypeAge = new ArrayList<>();
+    /**
+     *
+     */
+    public static List<String> attCommunes = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<Double> valCommunes = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<String> attCspAct = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<Double> valCspAct = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<String> attDiplome = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<Double> valDiplome = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<String> attTaille = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<Double> valTaille = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<String> attTypeAge = new ArrayList<>();
+
+    /**
+     *
+     */
+    public static List<Double> valTypeAge = new ArrayList<>();
 
 	// Pour récupérer données
+
+    /**
+     *
+     * @param l
+     */
 	public static void attCommunes(String l) {
 		attCommunes.add(l);
 	}
 
-	public static void valCommunes(Double l) {
+    /**
+     *
+     * @param l
+     */
+    public static void valCommunes(Double l) {
 		valCommunes.add(l);
 	}
 
-	public static void attCspAct(String l) {
+    /**
+     *
+     * @param l
+     */
+    public static void attCspAct(String l) {
 		attCspAct.add(l);
 	}
 
-	public static void valCspAct(Double l) {
+    /**
+     *
+     * @param l
+     */
+    public static void valCspAct(Double l) {
 		valCspAct.add(l);
 	}
 
-	public static void attDiplome(String l) {
+    /**
+     *
+     * @param l
+     */
+    public static void attDiplome(String l) {
 		attDiplome.add(l);
 	}
 
-	public static void valDiplome(Double l) {
+    /**
+     *
+     * @param l
+     */
+    public static void valDiplome(Double l) {
 		valDiplome.add(l);
 	}
 
-	public static void attTaille(String l) {
+    /**
+     *
+     * @param l
+     */
+    public static void attTaille(String l) {
 		attTaille.add(l);
 	}
 
-	public static void valTaille(Double l) {
+    /**
+     *
+     * @param l
+     */
+    public static void valTaille(Double l) {
 		valTaille.add(l);
 	}
 
-	public static void attTypeAge(String l) {
+    /**
+     *
+     * @param l
+     */
+    public static void attTypeAge(String l) {
 		attTypeAge.add(l);
 	}
 
-	public static void valTypeAge(Double l) {
+    /**
+     *
+     * @param l
+     */
+    public static void valTypeAge(Double l) {
 		valTypeAge.add(l);
 	}
 
 	// IPF
-	public static List<Double[]> totInit = new ArrayList<Double[]>(); // les totaux initiaux
-	public static List<Double[]> totTemp; // les totaux temporaires
-	public static List<Integer> nbAttParDim; // nb d attributs par dimension
-	public static Double[] results; // tableau de valeurs résultat
 
-	public static List<String[]> listAtt = new ArrayList<String[]>();
+    /**
+     *
+     */
+	public static List<Double[]> totInit = new ArrayList<Double[]>(); // les totaux initiaux
+
+    /**
+     *
+     */
+    public static List<Double[]> totTemp; // les totaux temporaires
+
+    /**
+     *
+     */
+    public static List<Integer> nbAttParDim; // nb d attributs par dimension
+
+    /**
+     *
+     */
+    public static Double[] results; // tableau de valeurs résultat
+
+    /**
+     *
+     */
+    public static List<String[]> listAtt = new ArrayList<String[]>();
 
 	// on initialise toutes les valeurs de results à 1
+
+    /**
+     *
+     */
 	public static void initializationNdim() {
 		Integer taille = 1;
 		for (Integer i : nbAttParDim)
@@ -76,6 +183,10 @@ public class IPF {
 	}
 
 	// on initialise les totaux temporaires
+
+    /**
+     *
+     */
 	public static void initializationTotTemp() {
 		totTemp = new ArrayList<>();
 		for (int i = 0; i < totInit.size(); i++) {
@@ -85,6 +196,10 @@ public class IPF {
 	}
 
 	// on initialise nbAttParDim
+
+    /**
+     *
+     */
 	public static void initializationNbAtt() {
 		nbAttParDim = new ArrayList<>();
 		for (int i = totInit.size() - 1; i >= 0; i--)
@@ -95,6 +210,10 @@ public class IPF {
 	}
 
 	// maj des totaux temporaires (pour chaque dimension)
+
+    /**
+     *
+     */
 	public static void majTotTemp() {
 		// on initialise le compteur d'indices : "00000"
 		int[] indice = new int[nbAttParDim.size()];
@@ -140,6 +259,11 @@ public class IPF {
 	}
 
 	// distribution selon une dimension
+
+    /**
+     *
+     * @param numDim
+     */
 	public static void distribution(int numDim) {
 		System.out.println("distribution selon " + numDim);
 		// on initialise le compteur d'indices : "00000"
@@ -180,6 +304,10 @@ public class IPF {
 	}
 
 	// on lance l'algo une fois que totInit est initialisé
+
+    /**
+     *
+     */
 	public static void IPF() {
 		initializationTotTemp();
 		initializationNbAtt();
@@ -205,6 +333,12 @@ public class IPF {
 	// liste des attributs dans l'ordre dans lequel les attributs sont
 	// insérés
 	// dans listAtt
+
+    /**
+     *
+     * @param attributsList
+     * @return
+     */
 	public static Double findData(List<String> attributsList) {
 		if (attributsList.size() == nbAttParDim.size()) {
 			List<Integer> listIndex = new ArrayList<>();
@@ -244,7 +378,10 @@ public class IPF {
 			return null;
 	}
 
-	public static void calculIPF() {
+    /**
+     *
+     */
+    public static void calculIPF() {
 		String[] tabS = new String[attDiplome.size()];
 		for (int i = 0; i < attDiplome.size(); i++) {
 			tabS[i] = attDiplome.get(i);
@@ -311,7 +448,16 @@ public class IPF {
 
 	}
 
-	public static Double getData(String diplome, String typeAge, String taille,
+    /**
+     *
+     * @param diplome
+     * @param typeAge
+     * @param taille
+     * @param cspAct
+     * @param commune
+     * @return
+     */
+    public static Double getData(String diplome, String typeAge, String taille,
 			String cspAct, String commune) {
 
 		if (diplome == null || typeAge == null || taille == null
@@ -329,7 +475,11 @@ public class IPF {
 		return d;
 	}
 
-	public static boolean conditionsRun() {
+    /**
+     *
+     * @return
+     */
+    public static boolean conditionsRun() {
 		if (fr.univ_tours.li.mdjedaini.ideb.algo.misc.IPF.attCommunes.size() == 291
 				&& fr.univ_tours.li.mdjedaini.ideb.algo.misc.IPF.valCommunes.size() == 291
 				&& fr.univ_tours.li.mdjedaini.ideb.algo.misc.IPF.attTypeAge.size() == 30

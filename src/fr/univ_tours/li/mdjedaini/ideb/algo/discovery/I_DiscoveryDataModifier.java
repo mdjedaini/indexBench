@@ -16,6 +16,7 @@ public interface I_DiscoveryDataModifier {
     
     /**
      * 
+     * @param arg_cellList
      */
     public void modifyData(Collection<EAB_Cell> arg_cellList);
     

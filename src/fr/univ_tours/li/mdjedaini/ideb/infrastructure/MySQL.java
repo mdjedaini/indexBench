@@ -28,6 +28,12 @@ public class MySQL extends Database {
         }
     }
     
+    /**
+     *
+     * @param arg_cs
+     * @param arg_userName
+     * @param arg_password
+     */
     public MySQL(String arg_cs, String arg_userName, String arg_password) {
         this.connectionString   = arg_cs;
         this.username           = arg_userName;

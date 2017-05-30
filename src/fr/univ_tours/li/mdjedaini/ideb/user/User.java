@@ -55,6 +55,7 @@ public class User {
 
     /**
      * Plays a list of queries for a given task.
+     * @param arg_tb
      * @return 
      */
     public List<Query> playQueryListForTask(TaskBundle arg_tb) {
@@ -77,17 +78,26 @@ public class User {
         this.uid    = arg_uid;
     }
 
+    /**
+     *
+     * @return
+     */
     public I_UserSimulator getUserModel() {
         return this.userModel;
     }
 
     /**
      * 
+     * @param arg_userModel
      */
     public void setUserModel(I_UserSimulator arg_userModel) {
         this.userModel  = arg_userModel;
     }
     
+    /**
+     *
+     * @return
+     */
     public BenchmarkEngine getBenchmarkEngine() {
         return this.be;
     }

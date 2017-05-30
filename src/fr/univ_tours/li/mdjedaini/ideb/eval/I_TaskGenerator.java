@@ -16,6 +16,7 @@ public interface I_TaskGenerator {
     
     /**
      * Generates a list of tasks.
+     * @param arg_nbTask
      * @return 
      */
     public List<Task> generateTaskList(Integer arg_nbTask);
