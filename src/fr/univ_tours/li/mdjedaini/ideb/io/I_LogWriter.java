@@ -1,0 +1,24 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package fr.univ_tours.li.mdjedaini.ideb.io;
+
+import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
+
+/**
+ *
+ * @author mahfoud
+ */
+public interface I_LogWriter {
+    
+    /**
+     * Writes a log to a file of a given path.
+     * @param arg_log
+     * @param arg_filePath
+     * @return 
+     */
+    public String writeLog(String arg_inFile, String arg_outFilePath, String arg_xslFilePath);
+    
+}

@@ -1,0 +1,76 @@
+package fr.univ_tours.li.mdjedaini.ideb.olap.query;
+
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
+
+public class ProjectionFragment extends Fragment implements java.io.Serializable {
+
+    // 
+    private EAB_Level projectionLevel;
+    
+    public ProjectionFragment(QueryTriplet arg_q, EAB_Level arg_level) {
+        super();
+        this.q                  = arg_q;
+        this.projectionLevel    = arg_level;
+    }
+    
+    /**
+     * 
+     * @param arg_dimensionName
+     * @param arg_hierarchyName
+     * @param arg_levelName 
+     */
+    public ProjectionFragment(QueryTriplet arg_q, String arg_dimensionName, String arg_hierarchyName, String arg_levelName) {
+        this.q                  = arg_q;
+        this.projectionLevel    = this.getQuery().getCube().cubeLevelList.get("[" + arg_dimensionName + "." + arg_hierarchyName + "].[" + arg_levelName + "]");
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public EAB_Level getLevel() {
+        return this.projectionLevel;
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String toString() {
+        return this.projectionLevel.getUniqueName();
+    }
+    
+    /**
+     * 
+     * @param arg_pf
+     * @return 
+     */
+    public boolean equals(Object arg_o) {
+        ProjectionFragment arg_pf   = (ProjectionFragment)arg_o;
+        return (this.projectionLevel.equals(arg_pf.projectionLevel));
+    }
+    
+    /**
+     * 
+     * @return 
+     */
+    public String getDimensionName() {
+        return this.projectionLevel.getHierarchy().getDimension().getUniqueName();
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public String getHierarchyName() {
+        return this.projectionLevel.getHierarchy().getUniqueName();
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public String getLevelName() {
+        return this.projectionLevel.getUniqueName();
+    }
+}
