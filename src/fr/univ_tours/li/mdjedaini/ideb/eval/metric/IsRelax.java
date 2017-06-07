@@ -21,7 +21,7 @@ import java.util.List;
  * It evaluates how rich is the access area provided by the SUT.
  * @author mahfoud
  */
-public class IsRefine extends Metric {
+public class IsRelax extends Metric {
     
     CellList sutCellList;
     CellList focusZone;
@@ -30,7 +30,7 @@ public class IsRefine extends Metric {
      * 
      * @param arg_be 
      */
-    public IsRefine(BenchmarkEngine arg_be) {
+    public IsRelax(BenchmarkEngine arg_be) {
         super(arg_be);
         this.name           = "Metric - Iterative Distance";
         this.description    = "Computes iteratively the edition distance between two subsequent queries...";

@@ -6,9 +6,11 @@
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryEditionDistance;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
@@ -21,7 +23,7 @@ import java.util.List;
  * It evaluates how rich is the access area provided by the SUT.
  * @author mahfoud
  */
-public class IsRefine extends Metric {
+public class MetricIterativeIdentity extends Metric {
     
     CellList sutCellList;
     CellList focusZone;
@@ -30,10 +32,10 @@ public class IsRefine extends Metric {
      * 
      * @param arg_be 
      */
-    public IsRefine(BenchmarkEngine arg_be) {
+    public MetricIterativeIdentity(BenchmarkEngine arg_be) {
         super(arg_be);
-        this.name           = "Metric - Iterative Distance";
-        this.description    = "Computes iteratively the edition distance between two subsequent queries...";
+        this.name           = "Metric - Iterative Identity";
+        this.description    = "Verifies if the query is identical to the previous one...";
     }
     
     /**
@@ -42,7 +44,6 @@ public class IsRefine extends Metric {
      * @param arg_tr
      * @return 
      */
-    @Override
     public MetricScore apply(Exploration arg_tr) {
         MetricScore result  = new MetricScore(this, arg_tr);
         
@@ -54,12 +55,31 @@ public class IsRefine extends Metric {
         queryScoreList.add(0.);
         
         for(int i = 1; i < arg_tr.getWorkSession().getNumberOfQueries(); i++) {
-            Double distance = qed.distance(workSession.getQueryByPosition(i), workSession.getQueryByPosition(i-1)).doubleValue();
+            Double distance = this.computeIdentity(workSession.getQueryByPosition(i), workSession.getQueryByPosition(i-1));
             queryScoreList.add(distance);
         }
         
         result.score            = Stats.average(queryScoreList);
         result.addScoreList(queryScoreList);
+        
+        return result;
+    }
+
+    /**
+     * Computes the recall between two queries.
+     * First query is the retrieved set, and second query is the relevant set of cells.
+     * @param arg_q1
+     * @param arg_q2
+     * @return 
+     */
+    public Double computeIdentity(Query arg_q1, Query arg_q2) {
+        Double result   = 0.;
+
+        QueryConverter qc   = new QueryConverter(this.getBenchmarkEngine());
+        
+        if(qc.toQueryTriplet(arg_q1).equals(qc.toQueryTriplet(arg_q2))) {
+            result  = 1.;
+        }
         
         return result;
     }
