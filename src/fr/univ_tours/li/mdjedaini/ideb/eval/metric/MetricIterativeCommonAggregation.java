@@ -58,6 +58,7 @@ public class MetricIterativeCommonAggregation extends Metric {
             System.out.println(workSession.getQueryByPosition(i-1));
             System.out.println("and ");
             System.out.println(workSession.getQueryByPosition(i));
+            queryScoreList.add(commonAggregations.doubleValue());
         }
         
         result.score            = Stats.average(queryScoreList);
