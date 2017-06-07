@@ -272,7 +272,65 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         return true;
     }
     
+    /**
+     * 
+     * @param arg_qt
+     * @return 
+     */
+    public Boolean isRefineOf(QueryTriplet arg_qt) {
+
+        Boolean result  = true;
+        
+        for(EAB_Hierarchy h_tmp : this.getCube().getHierarchyList()) {
+        
+            ProjectionFragment pf_q1    = this.getProjectionFragmentByHierarchy(h_tmp);
+            ProjectionFragment pf_q2    = arg_qt.getProjectionFragmentByHierarchy(h_tmp);
+            
+            EAB_Level l1    = this.getProjectionFragmentByHierarchy(h_tmp).getLevel();
+            EAB_Level l2    = arg_qt.getProjectionFragmentByHierarchy(h_tmp).getLevel();
+            
+            if(!l1.isChildOf(l2)) {
+                result  = false;
+                return result;
+            }
+
+            HashSet<SelectionFragment> sf_list_q1  = (HashSet)this.getSelectionFragmentByHierarchy(h_tmp);
+            HashSet<SelectionFragment> sf_list_q2  = (HashSet)arg_qt.getSelectionFragmentByHierarchy(h_tmp);
+            
+            for(SelectionFragment sf_tmp_1 : sf_list_q1) {
+                boolean isChild = false;
+                
+                for(SelectionFragment sf_tmp_2 : sf_list_q2) {
+                    if(sf_tmp_1.getMemberValue().isChildOf(sf_tmp_2.getMemberValue())) {
+                        isChild = true;
+                        break;
+                    }
+                }
+                
+                // if the member has no parent, and if the previous query had selections on the same hierarchy
+                // then this is not a refine relationship
+                if(!isChild && !sf_list_q2.isEmpty()) {
+                    result  = false;
+                    return result;
+                }
+                
+            }
+            
+        }
+
+        return result;
+    }
     
+    /**
+     * 
+     * @param arg_qt
+     * @return 
+     */
+    public Boolean isRelaxOf(QueryTriplet arg_qt) {
+
+        return arg_qt.isRefineOf(this);
+        
+    }
     
     /**
      * Add a measure fragment according to a measure fragment already created.
