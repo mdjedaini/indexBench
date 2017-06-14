@@ -81,7 +81,10 @@ public class MetricIterativeCommonAggregation extends Metric {
         
         for(ProjectionFragment pf_tmp : qc.toQueryTriplet(arg_q1).getProjectionFragments()) {    
             if(qc.toQueryTriplet(arg_q2).getProjectionFragments().contains(pf_tmp)) {
-                result++;
+                // only consider nonAll levels
+                if(!pf_tmp.getLevel().isAllLevel()) {
+                    result++;
+                }
             }
         }
         

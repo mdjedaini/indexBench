@@ -32,8 +32,8 @@ public class MetricIsRelax extends Metric {
      */
     public MetricIsRelax(BenchmarkEngine arg_be) {
         super(arg_be);
-        this.name           = "Metric - Iterative Distance";
-        this.description    = "Computes iteratively the edition distance between two subsequent queries...";
+        this.name           = "Metric - Is Relax";
+        this.description    = "True if the query is a relax of the previous one, false otherwise...";
     }
     
     /**
