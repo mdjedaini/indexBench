@@ -2,6 +2,7 @@ package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
+import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryOperationDifferential;
 import fr.univ_tours.li.mdjedaini.ideb.ext.falseto.FalsetoQueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
@@ -281,44 +282,30 @@ public class QueryTriplet extends Query implements java.io.Serializable {
     public Boolean isRefineOf(QueryTriplet arg_qt) {
 
         Boolean result  = true;
+    
+        QueryOperationDifferential qod  = new QueryOperationDifferential(this.getCube().getBencharkEngine());
         
-        for(EAB_Hierarchy h_tmp : this.getCube().getHierarchyList()) {
+        // if measures have changed, return false
+        if(!qod.addedMeasures(arg_qt, this).isEmpty() || !qod.removedMeasures(arg_qt, this).isEmpty()) {
+            return false;
+        }
         
-            ProjectionFragment pf_q1    = this.getProjectionFragmentByHierarchy(h_tmp);
-            ProjectionFragment pf_q2    = arg_qt.getProjectionFragmentByHierarchy(h_tmp);
-            
-            EAB_Level l1    = this.getProjectionFragmentByHierarchy(h_tmp).getLevel();
-            EAB_Level l2    = arg_qt.getProjectionFragmentByHierarchy(h_tmp).getLevel();
-            
-            if(!l1.isChildOf(l2)) {
-                result  = false;
-                return result;
-            }
-
-            HashSet<SelectionFragment> sf_list_q1  = (HashSet)this.getSelectionFragmentByHierarchy(h_tmp);
-            HashSet<SelectionFragment> sf_list_q2  = (HashSet)arg_qt.getSelectionFragmentByHierarchy(h_tmp);
-            
-            for(SelectionFragment sf_tmp_1 : sf_list_q1) {
-                boolean isChild = false;
-                
-                for(SelectionFragment sf_tmp_2 : sf_list_q2) {
-                    if(sf_tmp_1.getMemberValue().isChildOf(sf_tmp_2.getMemberValue())) {
-                        isChild = true;
-                        break;
-                    }
-                }
-                
-                // if the member has no parent, and if the previous query had selections on the same hierarchy
-                // then this is not a refine relationship
-                if(!isChild && !sf_list_q2.isEmpty()) {
-                    result  = false;
-                    return result;
-                }
-                
-            }
-            
+        // if a filter has been removed, return false
+        if(!qod.removedFilters(arg_qt, this).isEmpty()) {
+            return false;
+        }
+        
+        // if a roolup has been performed, return false
+        if(!qod.rollUp(arg_qt, this).isEmpty()) {
+            return false;
         }
 
+        // to return true, the query must have at least one added filter OR one drill down
+        // otherwise it would be the same query
+        if(qod.addedFilters(arg_qt, this).isEmpty() && qod.drillDown(arg_qt, this).isEmpty()) {
+            return false;
+        }
+        
         return result;
     }
     
