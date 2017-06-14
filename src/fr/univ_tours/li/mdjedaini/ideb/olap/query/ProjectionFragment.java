@@ -1,6 +1,7 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
+import java.util.Objects;
 
 /**
  *
@@ -58,6 +59,13 @@ public class ProjectionFragment extends Fragment implements java.io.Serializable
     public boolean equals(Object arg_o) {
         ProjectionFragment arg_pf   = (ProjectionFragment)arg_o;
         return (this.projectionLevel.equals(arg_pf.projectionLevel));
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.projectionLevel);
+        return hash;
     }
     
     /**

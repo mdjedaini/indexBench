@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import org.olap4j.CellSet;
 import org.olap4j.layout.RectangularCellSetFormatter;
@@ -613,6 +614,38 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         
         return r;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.measureList);
+        hash = 79 * hash + Objects.hashCode(this.projectionList);
+        hash = 79 * hash + Objects.hashCode(this.selectionList);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final QueryTriplet other = (QueryTriplet) obj;
+        if (!Objects.equals(this.measureList, other.measureList)) {
+            return false;
+        }
+        if (!Objects.equals(this.projectionList, other.projectionList)) {
+            return false;
+        }
+        if (!Objects.equals(this.selectionList, other.selectionList)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
     /**
      * Executes the current query.
