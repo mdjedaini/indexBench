@@ -108,7 +108,7 @@ public class SaikuLogLoader implements I_LogLoader {
         System.out.println("I am parsing the file: " + arg_sessionFilePath);
         
         // pattern for extracting cube name
-        Pattern p = Pattern.compile("from \\[(.*?)\\]");
+        Pattern p = Pattern.compile("from \\[(.*?)\\].*");
 
         File file   = new File(arg_sessionFilePath);
         
