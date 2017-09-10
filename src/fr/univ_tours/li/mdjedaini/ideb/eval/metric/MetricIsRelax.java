@@ -6,9 +6,11 @@
 package fr.univ_tours.li.mdjedaini.ideb.eval.metric;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryEditionDistance;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.struct.CellList;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Session;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
@@ -46,7 +48,7 @@ public class MetricIsRelax extends Metric {
     public MetricScore apply(Exploration arg_tr) {
         MetricScore result  = new MetricScore(this, arg_tr);
         
-        QueryEditionDistance qed    = new QueryEditionDistance();
+        QueryConverter qc   = new QueryConverter(this.benchmarkEngine);
         
         List<Double> queryScoreList = new ArrayList<>();
         Session workSession         = arg_tr.getWorkSession();
@@ -54,8 +56,11 @@ public class MetricIsRelax extends Metric {
         queryScoreList.add(0.);
         
         for(int i = 1; i < arg_tr.getWorkSession().getNumberOfQueries(); i++) {
-            Double distance = qed.distance(workSession.getQueryByPosition(i), workSession.getQueryByPosition(i-1)).doubleValue();
-            queryScoreList.add(distance);
+            QueryTriplet qt         = qc.toQueryTriplet(workSession.getQueryByPosition(i-1));
+            QueryTriplet qt_next    = qc.toQueryTriplet(workSession.getQueryByPosition(i));
+            Boolean refine          = qt_next.isRelaxOf(qt);
+            Double isRefine         = refine ? 1. : 0.;
+            queryScoreList.add(isRefine);
         }
         
         result.score            = Stats.average(queryScoreList);
