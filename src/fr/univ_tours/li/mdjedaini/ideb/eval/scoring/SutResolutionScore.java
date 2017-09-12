@@ -11,6 +11,7 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.Task;
 import fr.univ_tours.li.mdjedaini.ideb.eval.TaskResolution;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Instant;
@@ -150,6 +151,11 @@ public class SutResolutionScore {
      * 
      */
     public void exportToCsv() {
+        File f_tmp  = new File("output/");
+        if(f_tmp.exists()) {
+            f_tmp.mkdir();
+        }
+        
         String fileName = "output/" + this.sut.getName() + "-" + Instant.now().toEpochMilli() + ".csv";
         this.exportToCsv(fileName);
     }
@@ -163,7 +169,7 @@ public class SutResolutionScore {
         try {
             
             FileWriter writer   = new FileWriter(arg_fileName);
-         
+            
             Map<Metric, Double> metricSum   = new HashMap<>();
                     
             for(Metric m_tmp : this.getMetricList()) {

@@ -72,5 +72,5 @@ nbdist/
 /res/dopan/
 /res/forCubeload/
 /src/fr/univ_tours/li/mdjedaini/ideb/local/
-/src/fr/univ_tours/li/mdjedaini/ideb/examples/
+#/src/fr/univ_tours/li/mdjedaini/ideb/examples/
 /nbproject/
