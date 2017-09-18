@@ -44,6 +44,14 @@ public class FalsetoRecommander implements I_SUT {
      *
      * @param percentage
      */
+    public FalsetoRecommander() {
+        this.percentage = 0.8;
+    }
+    
+    /**
+     *
+     * @param percentage
+     */
     public FalsetoRecommander(double percentage) {
         this.percentage         = percentage;
         set_querysession_log    = new HashSet<>();
@@ -93,7 +101,7 @@ public class FalsetoRecommander implements I_SUT {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "SUT-Falseto";
     }
 
     /**

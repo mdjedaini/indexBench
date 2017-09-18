@@ -48,7 +48,7 @@ public class SUT_UserModel implements I_SUT {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "SUT-UserModel";
     }
     
     /**

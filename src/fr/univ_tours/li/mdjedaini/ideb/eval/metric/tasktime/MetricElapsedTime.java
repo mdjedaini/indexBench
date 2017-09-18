@@ -45,8 +45,8 @@ public class MetricElapsedTime extends Metric {
             result.queryScoreList.add(elapsedTime.doubleValue() / 1000);
         }
         
-        Long initialTime    = arg_tr.getWorkSession().timeAfterQueryExecutionList.get(arg_tr.getWorkSession().getNumberOfQueries() - 1);
-        Long finalTime      = arg_tr.getWorkSession().timeBeforeQueryExecutionList.get(0);
+        Long finalTime      = arg_tr.getWorkSession().timeAfterQueryExecutionList.get(arg_tr.getWorkSession().getNumberOfQueries() - 1);
+        Long initialTime    = arg_tr.getWorkSession().timeBeforeQueryExecutionList.get(0);
         
         Long time   = finalTime - initialTime;
         

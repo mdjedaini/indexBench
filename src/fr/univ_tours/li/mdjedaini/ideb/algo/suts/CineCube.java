@@ -77,7 +77,7 @@ public class CineCube implements I_SUT {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "SUT-CineCube";
     }
     
     

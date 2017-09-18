@@ -67,7 +67,7 @@ public class NaiveRecommander implements I_SUT {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "SUT-Naive";
     }
     
     

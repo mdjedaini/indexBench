@@ -78,7 +78,7 @@ public class CellCoverageRecommander implements I_SUT {
      */
     @Override
     public String getName() {
-        return this.getClass().getName();
+        return "SUT-CellCoverage";
     }
     
     /**
