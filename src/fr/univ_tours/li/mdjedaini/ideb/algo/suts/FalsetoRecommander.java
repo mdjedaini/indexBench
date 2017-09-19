@@ -41,24 +41,22 @@ public class FalsetoRecommander implements I_SUT {
     FalsetoRecommenderSys falsetosut;
     
     /**
-     *
-     * @param percentage
+     * A default percentage of 0.8 is given to Falseto
      */
     public FalsetoRecommander() {
-        this.percentage = 0.8;
+        this.percentage         = 0.8;
+        set_querysession_log    = new HashSet<>();
+        set_querysession_user   = new HashSet<>();
+        falsetosut              = new FalsetoRecommenderSys();
     }
     
     /**
-     *
-     * @param percentage
+     * 
+     * @param percentage percentage required by Falseto
      */
     public FalsetoRecommander(double percentage) {
-        this.percentage         = percentage;
-        set_querysession_log    = new HashSet<>();
-        set_querysession_user   = new HashSet<>();
-
-//        qf_qc= new QuerySessionToSessionConverter(cube);
-        falsetosut              = new FalsetoRecommenderSys();
+        this();
+        this.percentage = percentage;
     }
     
     /**
