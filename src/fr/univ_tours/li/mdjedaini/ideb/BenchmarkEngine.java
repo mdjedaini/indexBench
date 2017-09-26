@@ -197,14 +197,21 @@ public class BenchmarkEngine {
      * @return 
      */
     public EAB_Cube getDefaultCube() {
-        return this.getInternalCubeByName(this.getBenchmarkData().getConnection().getDefaultCube().getName());
+        EAB_Connection connection   = this.getConnection();
+        connection.open();
+        EAB_Cube result = this.getInternalCubeByName(connection.getDefaultCube().getName());
+        connection.close();
+        return result;
     }
     
     /**
      * Initializes all available cubes...
      */
     public void initCubeList() {
-        for(Cube c_tmp : this.getConnection().getMondrianConnection().getSchema().getCubes()) {
+        EAB_Connection connection   = new EAB_Connection(this);
+        connection.open();
+        
+        for(Cube c_tmp : connection.getMondrianConnection().getSchema().getCubes()) {
             System.out.println("Cube " + c_tmp.getName() + " - Loading cube data in memory...");
             EAB_Cube ic_tmp   = new EAB_Cube(this, c_tmp);
             ic_tmp.loadDataFromMondrianCube();

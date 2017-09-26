@@ -164,7 +164,9 @@ public class OlapSystem {
      * @return 
      */
     public EAB_Connection getConnection() {
-        return this.c;
+        //return this.c;
+        EAB_Connection c_tmp    = new EAB_Connection(this.getBenchmarkEngine());
+        return c_tmp;
     }
     
     /**

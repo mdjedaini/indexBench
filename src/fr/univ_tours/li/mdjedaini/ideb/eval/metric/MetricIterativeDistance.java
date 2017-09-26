@@ -56,10 +56,10 @@ public class MetricIterativeDistance extends Metric {
         
         for(int i = 1; i < arg_tr.getWorkSession().getNumberOfQueries(); i++) {
             Double distance = qed.distance(workSession.getQueryByPosition(i), workSession.getQueryByPosition(i-1)).doubleValue();
-            System.out.println("Distance between 2 following queries: " + distance);
-            System.out.println(workSession.getQueryByPosition(i-1));
-            System.out.println("and ");
-            System.out.println(workSession.getQueryByPosition(i));
+//            System.out.println("Distance between 2 following queries: " + distance);
+//            System.out.println(workSession.getQueryByPosition(i-1));
+//            System.out.println("and ");
+//            System.out.println(workSession.getQueryByPosition(i));
             
             queryScoreList.add(distance);
         }

@@ -80,6 +80,10 @@ public class Log {
      * @param arg_session 
      */
     public void addSession(Session arg_session) {
+        
+        // convert queries of the session before adding it to the log
+        arg_session.convertQueries();
+        
         arg_session.setSid(this.sid);
         this.sid++;
         

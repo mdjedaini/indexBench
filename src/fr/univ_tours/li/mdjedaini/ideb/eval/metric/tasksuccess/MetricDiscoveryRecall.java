@@ -47,8 +47,8 @@ public class MetricDiscoveryRecall extends Metric {
     @Override
     public MetricScore apply(Exploration arg_tr) {
         MetricScore result  = new MetricScore(this, arg_tr);
-         
-       // 
+
+        // 
         //arg_tr.getWorkSession().execute(Boolean.TRUE);
         this.sutCellList        = arg_tr.getWorkSession().getCellList();
         Integer nbOfDiscoveries = arg_tr.getTargetDiscoveryList().size();

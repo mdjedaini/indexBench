@@ -40,8 +40,6 @@ public class MetricNumberOfQueries extends Metric {
     public MetricScore apply(Exploration arg_tr) {
         MetricScore result  = new MetricScore(this, arg_tr);
         
-        result.score = arg_tr.getWorkSession().getNumberOfQueries().doubleValue();
-        
         List<Double> resultList = new ArrayList<>();
         
         for(int i = 1; i <= arg_tr.getWorkSession().getQueryList().size(); i++) {
@@ -49,6 +47,9 @@ public class MetricNumberOfQueries extends Metric {
         }
         
         result.addScoreList(resultList);
+        
+        // aggregated value is the last value of the exploration
+        result.score    = (Double)result.queryScoreList.get(result.queryScoreList.size() - 1);
         
         return result;
     }

@@ -101,30 +101,86 @@ public class ExplorationScorer implements I_ExplorationScorer {
         
         // uses the focus detection for computing focus zone
         arg_tr.computeFocusZone(this.focusDetection);
+                
+        List<Thread> threadList = new ArrayList<>();
         
         for(Metric m_tmp : this.metricList) {
         
-            // list of scores for each query
-            List<Double> record = new ArrayList<>();
+            // parallize this
+            MetricOnExplorationComputer moec    = new MetricOnExplorationComputer(m_tmp, arg_tr, result);
+            threadList.add(moec);
+            moec.start();
             
-            System.out.println("Computing score for metric " + m_tmp.getName());
-            long before = System.currentTimeMillis();
-            MetricScore ms      = m_tmp.apply(arg_tr);
-            long after = System.currentTimeMillis();
-            long elapsed    = after - before;
-            this.computationTime    += m_tmp.getName() + ";" + elapsed + ";" + arg_tr.getWorkSession().getNumberOfQueries();
-            this.computationTime    += System.lineSeparator();
-                        
-            result.registerScore(m_tmp, ms);
+//            // list of scores for each query
+//            List<Double> record = new ArrayList<>();
+//            
+//            System.out.println("Computing score for metric " + m_tmp.getName());
+//            long before = System.currentTimeMillis();
+//            MetricScore ms      = m_tmp.apply(arg_tr);
+//            long after = System.currentTimeMillis();
+//            long elapsed    = after - before;
+//            this.computationTime    += m_tmp.getName() + ";" + elapsed + ";" + arg_tr.getWorkSession().getNumberOfQueries();
+//            this.computationTime    += System.lineSeparator();
+//                        
+//            result.registerScore(m_tmp, ms);
             
         }
+        
+        // *** waiting for all the converter threads to finish...
+        try {
+            for(Thread t_tmp : threadList) {
+                t_tmp.join();
+            }
+            System.out.println("Threads have finished to compute the metrics for the given exploration...");
+        } catch(Exception arg_e) {
+            arg_e.printStackTrace();
+        }
+//        // *** converter threads have finished...
         
         // clear the stored results to avoid heap space exception
         arg_tr.getWorkSession().clear();
         
         return result;
     }
-    
-    
+   
+    /**
+     * Inner class for parallelizing the computation of the metrics per exploration
+     */
+    public class MetricOnExplorationComputer extends Thread {
+
+        Metric m_tmp;
+        Exploration e_tmp;
+        ExplorationScore result;
+        
+        /**
+         * 
+         * @param arg_m
+         * @param arg_e 
+         */
+        public MetricOnExplorationComputer(Metric arg_m, Exploration arg_e, ExplorationScore arg_es) {
+            this.m_tmp  = arg_m;
+            this.e_tmp  = arg_e;
+            this.result = arg_es;
+        }
+               
+        /**
+         * 
+         */
+        @Override
+        public void run() {
+            // list of scores for each query
+            List<Double> record = new ArrayList<>();
+            
+            System.out.println("Computing score for metric " + m_tmp.getName());
+            long before = System.currentTimeMillis();
+            MetricScore ms      = m_tmp.apply(e_tmp);
+            long after = System.currentTimeMillis();
+            long elapsed    = after - before;
+//            this.computationTime    += m_tmp.getName() + ";" + elapsed + ";" + arg_tr.getWorkSession().getNumberOfQueries();
+//            this.computationTime    += System.lineSeparator();
+                        
+            result.registerScore(m_tmp, ms);
+        }
+    }
     
 }

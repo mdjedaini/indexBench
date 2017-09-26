@@ -50,7 +50,10 @@ public class MetricElapsedTime extends Metric {
         
         Long time   = finalTime - initialTime;
         
-        result.score    = time.doubleValue();
+        //result.score    = time.doubleValue();
+        
+        // aggregated value is the last value of the exploration
+        result.score    = (Double)result.queryScoreList.get(result.queryScoreList.size() - 1);
         
         return result;
     }

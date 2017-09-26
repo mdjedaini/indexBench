@@ -27,7 +27,7 @@ import java.util.List;
  * It evaluates how rich is the access area provided by the SUT.
  * @author mahfoud
  */
-public class MetricClickDepth extends Metric {
+public class MetricDispersion extends Metric {
     
     I_QueryNeighborhood qn;
     
@@ -35,11 +35,11 @@ public class MetricClickDepth extends Metric {
      * 
      * @param arg_be 
      */
-    public MetricClickDepth(BenchmarkEngine arg_be) {
+    public MetricDispersion(BenchmarkEngine arg_be) {
         super(arg_be);
         this.qn             = new QueryNeighborhood();
-        this.name           = "Metric - Click Depth";
-        this.description    = "Evaluates the click depth for each query. It is the lenght of the subsequence of queries chained by at most a distance of 1.";
+        this.name           = "Metric - Dispersion";
+        this.description    = "Dispersion is computed as the inverse of Click Depth.";
     }
 
     /**

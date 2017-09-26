@@ -9,6 +9,7 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SutResolutionScore;
 import fr.univ_tours.li.mdjedaini.ideb.algo.suts.I_SUT;
 import fr.univ_tours.li.mdjedaini.ideb.params.EvaluationParameters;
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.algo.FocusZone;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.ExplorationScore;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.ExplorationScorer;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.SUTScorer;
@@ -189,6 +190,9 @@ public class SUT_Evaluator implements I_Evaluator {
         // TR records how a SUT solved a task with a given task bundle
         TaskResolution tr   = new TaskResolution(this.benchmarkEngine, arg_sut, arg_task, arg_tb);
         tr.init();
+
+        // computes the focus zone which is made of the coverage zones
+        tr.computeFocusZone(this.benchmarkEngine.getFocusDetector());
         
         User u              = arg_task.getUser();
         
@@ -232,8 +236,8 @@ public class SUT_Evaluator implements I_Evaluator {
                 sutTimestampList.add(timestampPerQuery);
             }
             
-            //boolean somethingNewDiscovered  = this.somethingNewDiscovered(tr, lq_tmp);
-            boolean somethingNewDiscovered  = false;
+            boolean somethingNewDiscovered  = this.somethingNewDiscovered(tr, lq_tmp);
+//            boolean somethingNewDiscovered  = false;
             continueEvaluation              = somethingNewDiscovered || consumedChances < this.numberOfChances;
 
             // I add the query list AFTER (!!!) checking whether something new has been discovered
@@ -300,32 +304,44 @@ public class SUT_Evaluator implements I_Evaluator {
      * @return 
      */
     public boolean somethingNewDiscovered(TaskResolution arg_tr, List<Query> arg_queryList) {
-        boolean somethingNewDiscovered  = false;
+        FocusZone focusZone  = arg_tr.getFocusZoneList().iterator().next();
         
-        for(AbstractDiscovery ad_tmp : arg_tr.getTask().getTargetDiscoveryList()) {
-            //DiscoveryAsCellTopology dact    = (DiscoveryAsCellTopology)ad_tmp;
-            
-            CellList workSessionCells       = arg_tr.getWorkSession().getCellList();
-            
-            // verify whether the cell is present in a discovery or not
-            for(Query q_tmp : arg_queryList) {
-                QueryTriplet qt_tmp = (QueryTriplet)q_tmp;
-                
-                // for each cell of the query
-                for(EAB_Cell c_tmp : qt_tmp.getResult().computeCellList().getCellCollection()) {
-                    
-                    somethingNewDiscovered  = ad_tmp.getCellList().contains(c_tmp) && !workSessionCells.contains(c_tmp);
-                    
-                    if(somethingNewDiscovered) {
-                        return somethingNewDiscovered;
-                    }
+        // check if at least one cell in arg_queryList is in the focus zone
+        for(Query q_tmp : arg_queryList) {
+            for(EAB_Cell c_tmp : q_tmp.getResult().getCellList().getCellCollection()) {
+                if(focusZone.getCellList().contains(c_tmp)) {
+                    return true;
                 }
-                
             }
-            
         }
         
-        return somethingNewDiscovered;
+        return false;
+
+//        boolean somethingNewDiscovered  = false;
+//        for(AbstractDiscovery ad_tmp : arg_tr.getTask().getTargetDiscoveryList()) {
+//            //DiscoveryAsCellTopology dact    = (DiscoveryAsCellTopology)ad_tmp;
+//            
+//            CellList workSessionCells       = arg_tr.getWorkSession().getCellList();
+//            
+//            // verify whether the cell is present in a discovery or not
+//            for(Query q_tmp : arg_queryList) {
+//                QueryTriplet qt_tmp = (QueryTriplet)q_tmp;
+//                
+//                // for each cell of the query
+//                for(EAB_Cell c_tmp : qt_tmp.getResult().computeCellList().getCellCollection()) {
+//                    
+//                    somethingNewDiscovered  = ad_tmp.getCellList().contains(c_tmp) && !workSessionCells.contains(c_tmp);
+//                    
+//                    if(somethingNewDiscovered) {
+//                        return somethingNewDiscovered;
+//                    }
+//                }
+//                
+//            }
+//            
+//        }
+//        
+//        return somethingNewDiscovered;
     }
     
     /**

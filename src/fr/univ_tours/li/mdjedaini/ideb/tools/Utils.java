@@ -60,7 +60,7 @@ public class Utils {
 
         // IF ONLY ON CELL, RETURN 1.0
         if(arg_cellList.size() <= 1) {
-            System.out.println("Moins d'1 cellule: entropy = 1.");
+//            System.out.println("Moins d'1 cellule: entropy = 1.");
             result  = 1.;
             return result;
         }
@@ -74,7 +74,7 @@ public class Utils {
         // if sum equals 0, we return 1 (max entropy)
         // it means that all the cells have a value of 0.
         if(sum == 0) {
-            System.out.println("Somme nulle: entropy = 1.");
+//            System.out.println("Somme nulle: entropy = 1.");
             return 1.;
         }
         
@@ -101,7 +101,7 @@ public class Utils {
             System.out.println("Je suis NaN...");
         }
         
-        System.out.println("Entropy = " + result);
+//        System.out.println("Entropy = " + result);
         return result;
     }
   

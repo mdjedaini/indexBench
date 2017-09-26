@@ -4,6 +4,8 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.struct;
 import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
+import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
@@ -149,15 +151,19 @@ public class Session {
     
     /**
      * Adds a query to the session.
-     * Query is always converted to query triplet before being added.
+     * Query is added as is. Conversion is performed after by a specific function.
      * @param arg_q 
      */
     public void addQuery(Query arg_q) {
-        QueryConverter qc   = new QueryConverter(arg_q.getCube().getBencharkEngine());
-        QueryTriplet qt     = qc.toQueryTriplet(arg_q);
-        qt.setPosition(this.getNumberOfQueries());
-        this.queryList.add(qt);
-//        this.queryList.add(arg_q);
+        
+//        ParallelQueryLoader pql = new ParallelQueryLoader(this, arg_q);
+//        pql.start();
+        
+        arg_q.setPosition(this.getNumberOfQueries());
+        this.queryList.add(arg_q);
+        
+//        try { pql.join(); } catch(Exception arg_e) { arg_e.printStackTrace(); }
+        
     }
     
     /**
@@ -351,6 +357,40 @@ public class Session {
     }
     
     /**
+     * Converts all the queries to the QueryTriplet format.
+     */
+    public void convertQueries() {
+        for(int i = 0; i < this.getNumberOfQueries(); i++) {
+            Query q_tmp = this.getQueryByPosition(i);
+            QueryConverter qc   = new QueryConverter(q_tmp.getCube().getBencharkEngine());
+            QueryTriplet qt     = qc.toQueryTriplet(q_tmp);
+            qt.setPosition(i);
+            this.getQueryList().set(i, qt);
+        }
+        
+//        List<Thread> threadList = new ArrayList<>();
+//        
+//        for(int i = 0; i < this.getNumberOfQueries(); i++) {
+//            Query q_tmp = this.getQueryByPosition(i);
+//            ParallelQueryConverter pql = new ParallelQueryConverter(this, q_tmp);
+//            threadList.add(pql);
+//            pql.start();
+//        }
+//        
+//        // *** waiting for all the converter threads to finish...
+//        try {
+//            for(Thread t_tmp : threadList) {
+//                t_tmp.join();
+//            }
+//            System.out.println("Threads have finished...");
+//        } catch(Exception arg_e) {
+//            arg_e.printStackTrace();
+//        }
+//        // *** converter threads have finished...
+        
+    }
+    
+    /**
      * todo il faut optimiser cette fonction
      * le calcul des cellules d'un resultat ne doit etre fait que une seule fois
      * il faut gerer cela peut etre avec une memoire cache...
@@ -400,5 +440,37 @@ public class Session {
         
         return summary;
     }
+ 
+    /**
+     * Inner class for parallelizing the loading of sessions
+     */
+    public class ParallelQueryConverter extends Thread {
+
+        Session arg_s;
+        Query arg_q;
+        
+        /**
+         * 
+         * @param arg_s
+         * @param arg_q 
+         */
+        public ParallelQueryConverter(Session arg_s, Query arg_q) {
+            this.arg_s  = arg_s;
+            this.arg_q  = arg_q;
+        }
+               
+        /**
+         * 
+         */
+        @Override
+        public void run() {
+            Integer i           = arg_q.getPosition();
+            QueryConverter qc   = new QueryConverter(arg_q.getCube().getBencharkEngine());
+            QueryTriplet qt     = qc.toQueryTriplet(arg_q);
+            qt.setPosition(i);
+            arg_s.getQueryList().set(i, qt);
+        }
+    }
+    
     
 }

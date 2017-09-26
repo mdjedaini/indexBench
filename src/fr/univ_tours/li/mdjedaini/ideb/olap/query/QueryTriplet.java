@@ -649,8 +649,8 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         // if the query has been obtained from a MDX query, we execute the original query
         if(this.getOriginalQuery() != null) {
             if(this.getOriginalQuery() instanceof QueryMdx) {
-                System.out.println("Executing original query:");
-                System.out.println(this.getOriginalQuery());
+//                System.out.println("Executing original query:");
+//                System.out.println(this.getOriginalQuery());
                 QueryMdx q_mdx_tmp  = (QueryMdx)this.getOriginalQuery();
                 return q_mdx_tmp.execute(arg_store);
             }
@@ -681,7 +681,7 @@ public class QueryTriplet extends Query implements java.io.Serializable {
         FalsetoQueryConverter fc    = new FalsetoQueryConverter(this.getCube().getBencharkEngine());
         String mdxQuery             = fc.convertQuery(this).toMDX().toString();
         
-        System.out.println("Requete OLAP: " + mdxQuery);
+//        System.out.println("Requete OLAP: " + mdxQuery);
         
         try {
             CellSet result  = this.getCube().getBencharkEngine().getConnection().getOlap4jConnection().createStatement().executeOlapQuery(mdxQuery);

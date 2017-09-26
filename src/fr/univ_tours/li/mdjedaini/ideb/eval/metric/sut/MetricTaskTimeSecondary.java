@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.univ_tours.li.mdjedaini.ideb.eval.metric.novelty;
+package fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime.MetricElapsedTime;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 
 /**
- * This metric evaluates the evolution of the access area.
- * Access area is defined as all the primary cells (tuples) accessed.
- * It evaluates how rich is the access area provided by the SUT.
+ * This metric evaluates the time taken to resolve a task.
+ * 
  * @author mahfoud
  */
-public class MetricNoveltyPrimary extends Metric {
+public class MetricTaskTimeSecondary extends Metric {
     
     Metric metric;
     
@@ -24,14 +24,12 @@ public class MetricNoveltyPrimary extends Metric {
      * 
      * @param arg_be 
      */
-    public MetricNoveltyPrimary(BenchmarkEngine arg_be) {
+    public MetricTaskTimeSecondary(BenchmarkEngine arg_be) {
         super(arg_be);
-//        this.metric = new MetricRandom(arg_be);
-        this.metric = new MetricRelevantNewInformation(arg_be);
+        this.metric = new MetricElapsedTime(arg_be);
     }
     
     /**
-     * Generates a random double, between 0.0 and 1.0.
      * 
      * @param arg_tr
      * @return 

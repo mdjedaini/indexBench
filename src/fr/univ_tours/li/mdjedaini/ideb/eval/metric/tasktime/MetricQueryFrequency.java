@@ -58,7 +58,10 @@ public class MetricQueryFrequency extends Metric {
         Double time                 = met.apply(arg_tr).score;
         
         // frequency = nbQueries / (time * 1000) pour avoir des secondes
-        result.score    = nbQueries / time;
+        //result.score    = nbQueries / time;
+        
+        // aggregated value is the last value of the exploration
+        result.score    = (Double)result.queryScoreList.get(result.queryScoreList.size() - 1);
         
         return result;
     }

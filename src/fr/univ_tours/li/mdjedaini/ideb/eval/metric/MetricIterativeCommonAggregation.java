@@ -54,10 +54,10 @@ public class MetricIterativeCommonAggregation extends Metric {
         
         for(int i = 1; i < arg_tr.getWorkSession().getNumberOfQueries(); i++) {
             Integer commonAggregations   = this.commonAggregations(workSession.getQueryByPosition(i), workSession.getQueryByPosition(i-1));
-            System.out.println("Common filters between queries: " + commonAggregations);
-            System.out.println(workSession.getQueryByPosition(i-1));
-            System.out.println("and ");
-            System.out.println(workSession.getQueryByPosition(i));
+//            System.out.println("Common filters between queries: " + commonAggregations);
+//            System.out.println(workSession.getQueryByPosition(i-1));
+//            System.out.println("and ");
+//            System.out.println(workSession.getQueryByPosition(i));
             queryScoreList.add(commonAggregations.doubleValue());
         }
         

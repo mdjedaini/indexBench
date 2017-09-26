@@ -1,13 +1,12 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap.query;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
-import fr.univ_tours.li.mdjedaini.ideb.io.MondrianResultWriter;
+import fr.univ_tours.li.mdjedaini.ideb.EAB_Connection;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.EAB_Cell;
 import fr.univ_tours.li.mdjedaini.ideb.olap.result.Result;
-import java.io.File;
-import java.io.PrintWriter;
 import mondrian.olap.Axis;
+import mondrian.server.Execution;
 
 /**
  * This class represents a formal model of an OLAP query.
@@ -40,10 +39,14 @@ public class QueryMdx extends Query implements java.io.Serializable {
     public Result execute(Boolean arg_store) {
         
         BenchmarkEngine be          = this.getCube().getBencharkEngine();
-        mondrian.olap.Connection mc = be.getConnection().getMondrianConnection();
+        EAB_Connection connection   = be.getConnection();
+        connection.open();
+        mondrian.olap.Connection mc = connection.getMondrianConnection();
         
         mondrian.olap.Query mq      = mc.parseQuery(this.mdx);
         mondrian.olap.Result r      = mc.execute(mq);
+        
+        connection.close();
         
         Result  res = new Result(this, r);
         //System.out.println("La requete a " + r.getAxes().length + " axes...");

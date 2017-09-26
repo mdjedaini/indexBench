@@ -57,7 +57,7 @@ public class AggregationDepth extends Metric {
             Integer sum  = 0;
             
             for(ProjectionFragment pf_tmp : qt.getProjectionFragments()) {
-                System.out.println("Level " + pf_tmp.getLevelName() + " of depth " + pf_tmp.getLevel().getLevelDepth());
+//                System.out.println("Level " + pf_tmp.getLevelName() + " of depth " + pf_tmp.getLevel().getLevelDepth());
                 sum += pf_tmp.getLevel().getLevelDepth();
             }
             

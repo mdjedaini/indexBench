@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasksuccess;
+package fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.learning.MetricMLContribution;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 
 /**
@@ -16,21 +17,20 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
  * It evaluates how rich is the access area provided by the SUT.
  * @author mahfoud
  */
-public class MetricTaskSuccessPrimary extends Metric {
-
+public class MetricLearningPrimary extends Metric {
+    
     Metric metric;
     
     /**
      * 
      * @param arg_be 
      */
-    public MetricTaskSuccessPrimary(BenchmarkEngine arg_be) {
+    public MetricLearningPrimary(BenchmarkEngine arg_be) {
         super(arg_be);
-        this.metric         = new MetricDiscoveryRecall(arg_be);
+        this.metric         = new MetricMLContribution(arg_be);
     }
     
     /**
-     * Apply the metric on the task resolution.
      * 
      * @param arg_tr
      * @return 

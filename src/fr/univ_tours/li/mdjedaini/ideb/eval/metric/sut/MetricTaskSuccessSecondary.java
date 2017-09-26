@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasksuccess;
+package fr.univ_tours.li.mdjedaini.ideb.eval.metric.sut;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.eval.Exploration;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.Metric;
+import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasksuccess.MetricDiscoveryPrecision;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
 
 /**

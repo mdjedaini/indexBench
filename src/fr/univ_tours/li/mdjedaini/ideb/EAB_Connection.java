@@ -45,7 +45,7 @@ public class EAB_Connection {
             this.jdbcConnection     = DriverManager.getConnection(params.jdbcUrl, params.user, params.password);
             
             this.mondrianConnection = mondrian.olap.DriverManager.getConnection(params.getMondrianConnectionString(), null);
-            
+
             //this.olap4jConnection   = this.jdbcConnection.unwrap(OlapConnection.class);
             
         } catch(Exception arg_e) {
@@ -91,6 +91,12 @@ public class EAB_Connection {
      * Close the connection
      */
     public void close(){
-        this.mondrianConnection.close();
+        try {
+            this.mondrianConnection.close();
+            this.jdbcConnection.close();
+        } catch(Exception arg_e) {
+            arg_e.printStackTrace();
+        }
+        
     }
 }
