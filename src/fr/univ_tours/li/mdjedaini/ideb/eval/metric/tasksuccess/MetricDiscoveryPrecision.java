@@ -45,22 +45,30 @@ public class MetricDiscoveryPrecision extends Metric {
      */
     public MetricScore apply(Exploration arg_tr) {
         MetricScore result  = new MetricScore(this, arg_tr);
-        
+
         // 
         //arg_tr.getWorkSession().execute(Boolean.TRUE);
         this.sutCellList        = arg_tr.getWorkSession().getCellList();
         Integer nbOfDiscoveries = arg_tr.getTargetDiscoveryList().size();
         
-        List<Double> queryScoreList  = new ArrayList<>();
+        List<Double> queryScoreList = new ArrayList<>();
         
         for(Query q_tmp : arg_tr.getWorkSession().getQueryList()) {
-            //q_tmp.execute(Boolean.TRUE);
+            // add the cells of the current query to the sut cell list
+            this.sutCellList.addCellCollection(q_tmp.getResult().getCellList().getCellCollection());
             queryScoreList.add(this.applyOnQuery(q_tmp, arg_tr));
         }
         
-        result.score            = Stats.average(queryScoreList);
-        result.addScoreList(queryScoreList);
+        // compute the global recall for the exploration
         
+        CellList focusZoneCells = arg_tr.getTargetDiscoveryList().iterator().next().getCellList();
+        
+        Double globalRecall     = focusZoneCells.intersection(sutCellList).nbOfCells().doubleValue() / sutCellList.nbOfCells().doubleValue();
+        
+        // result.score            = Stats.average(queryScoreList);
+        result.score            = globalRecall;
+        result.addScoreList(queryScoreList);
+               
         return result;
     }
 

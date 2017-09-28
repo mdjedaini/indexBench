@@ -237,8 +237,10 @@ public class SUT_Evaluator implements I_Evaluator {
             }
             
             boolean somethingNewDiscovered  = this.somethingNewDiscovered(tr, lq_tmp);
+            Integer maxQueries              = 50;
+            
 //            boolean somethingNewDiscovered  = false;
-            continueEvaluation              = somethingNewDiscovered || consumedChances < this.numberOfChances;
+            continueEvaluation              = (somethingNewDiscovered || consumedChances < this.numberOfChances) && tr.getWorkSession().getNumberOfQueries() < maxQueries;
 
             // I add the query list AFTER (!!!) checking whether something new has been discovered
             tr.addQueryList(lq_tmp, sutTimestampList, "SUT");
@@ -314,6 +316,8 @@ public class SUT_Evaluator implements I_Evaluator {
                 }
             }
         }
+        
+        System.out.println(":S NOTHING NEW DISCOVERED :S");
         
         return false;
 

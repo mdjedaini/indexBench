@@ -56,12 +56,21 @@ public class MetricDiscoveryRecall extends Metric {
         List<Double> queryScoreList = new ArrayList<>();
         
         for(Query q_tmp : arg_tr.getWorkSession().getQueryList()) {
+            // add the cells of the current query to the sut cell list
+            this.sutCellList.addCellCollection(q_tmp.getResult().getCellList().getCellCollection());
             queryScoreList.add(this.applyOnQuery(q_tmp, arg_tr));
         }
         
-        result.score            = Stats.average(queryScoreList);
-        result.addScoreList(queryScoreList);
+        // compute the global recall for the exploration
         
+        CellList focusZoneCells = arg_tr.getTargetDiscoveryList().iterator().next().getCellList();
+        
+        Double globalRecall     = focusZoneCells.intersection(sutCellList).nbOfCells().doubleValue() / focusZoneCells.nbOfCells().doubleValue();
+        
+        // result.score            = Stats.average(queryScoreList);
+        result.score            = globalRecall;
+        result.addScoreList(queryScoreList);
+               
         return result;
     }
 
