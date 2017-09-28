@@ -162,8 +162,22 @@ public class ExplorationScore {
     public List<Map<Metric, Double>> getQueryToMetricScoreList() {
         return this.queryToMetricScoreList;
     }
-    
-    
+
+    /**
+     * 
+     * @return 
+     */
+    public Map<Metric, Double> getExplorationScorePerMetric() {
+        return explorationScorePerMetric;
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public Map<Metric, List<Double>> getMetricToComputationTimeList() {
+        return metricToComputationTimeList;
+    }
     
     /**
      * 

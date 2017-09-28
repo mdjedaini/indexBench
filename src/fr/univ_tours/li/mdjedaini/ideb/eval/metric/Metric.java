@@ -54,6 +54,14 @@ public abstract class Metric {
     
     /**
      * 
+     * @return a boolean indicating whether the score has to be registered or not
+     */
+    public Boolean registerScore() {
+        return Boolean.TRUE;
+    }
+    
+    /**
+     * 
      * @return 
      */
     public Integer getMid() {
