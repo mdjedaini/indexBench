@@ -81,7 +81,7 @@ public class TaskResolution extends Exploration {
         this.initialTimestamp   = this.getCurrentTimestamp();
         
         // execute queries and store results for further evaluation...
-        this.getWorkSession().execute(Boolean.TRUE);
+//        this.getWorkSession().execute(Boolean.TRUE);
     }
     
     /**

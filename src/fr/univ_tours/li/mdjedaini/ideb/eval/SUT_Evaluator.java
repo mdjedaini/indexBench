@@ -208,7 +208,7 @@ public class SUT_Evaluator implements I_Evaluator {
         while(continueEvaluation) {
             
             // 
-            System.out.println("The SUT recommends...");
+            System.out.println("The SUT " + arg_sut.getName() + " recommends...");
             
             List<List<Long>> sutTimestampList  = new ArrayList<>();
 
