@@ -178,8 +178,10 @@ public class ExplorationScorer implements I_ExplorationScorer {
             long elapsed    = after - before;
 //            this.computationTime    += m_tmp.getName() + ";" + elapsed + ";" + arg_tr.getWorkSession().getNumberOfQueries();
 //            this.computationTime    += System.lineSeparator();
-                        
+            
+            // method registerScore is synchronized
             result.registerScore(m_tmp, ms);
+            
         }
     }
     

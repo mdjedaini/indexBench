@@ -57,7 +57,7 @@ public class MetricClickDepth extends Metric {
         Session workSession = arg_tr.getWorkSession();
 
         result.queryScoreList   = new ArrayList<>(Collections.nCopies(workSession.getNumberOfQueries(), 0.));
-        System.out.println("query score list: " + result.queryScoreList);
+//        System.out.println("query score list: " + result.queryScoreList);
         
         for(int i = 0; i < arg_tr.getWorkSession().getNumberOfQueries() - 1; i++) {
             

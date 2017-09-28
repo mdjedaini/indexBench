@@ -85,7 +85,7 @@ public class ExplorationScore {
      * @param arg_m
      * @param arg_score 
      */
-    public void registerScore(Metric arg_m, MetricScore arg_score) {
+    public synchronized void registerScore(Metric arg_m, MetricScore arg_score) {
         this.explorationScorePerMetric.put(arg_m, arg_score.score);
         this.metricToQueryScoreList.put(arg_m, arg_score.queryScoreList);
         
