@@ -35,6 +35,7 @@ import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime.MetricElapsedTime;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime.MetricExecutionTime;
 import fr.univ_tours.li.mdjedaini.ideb.eval.metric.tasktime.MetricQueryFrequency;
 import fr.univ_tours.li.mdjedaini.ideb.eval.scoring.MetricScore;
+import fr.univ_tours.li.mdjedaini.ideb.tools.Stats;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -136,6 +137,9 @@ public class MetricMLContribution extends Metric {
         }
         
         // aggregation must be performed with the KT
+        // we put an arbitrary aggregation for compatibility purposes
+        result.score    = Stats.average(result.queryScoreList);
+        
         return result;
     }
     
