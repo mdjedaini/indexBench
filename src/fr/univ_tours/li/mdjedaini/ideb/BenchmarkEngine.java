@@ -184,9 +184,13 @@ public class BenchmarkEngine {
     public List<String> getCubeNameList() {
         List<String> result = new ArrayList<>();
         
-        for(mondrian.olap.Cube c_tmp : this.getConnection().getMondrianConnection().getSchema().getCubes()) {
+        EAB_Connection connection   = this.getConnection();
+        connection.open();
+        
+        for(mondrian.olap.Cube c_tmp : connection.getMondrianConnection().getSchema().getCubes()) {
             result.add(c_tmp.getName());
         }
+        connection.close();
         
         return result;
     }
