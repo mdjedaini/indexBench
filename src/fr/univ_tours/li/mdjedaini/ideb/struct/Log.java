@@ -253,7 +253,13 @@ public class Log {
         
         Query q_tmp = this.pickRandomQueryList(1).get(0);
         Result r    = q_tmp.execute(Boolean.TRUE);
-
+        
+        // we redo a draw is the query result has no cell(s)
+        if(r.getNumberOfCells() < 0) {
+            q_tmp = this.pickRandomQueryList(1).get(0);
+            r    = q_tmp.execute(Boolean.TRUE);
+        }
+        
         List<EAB_Cell> cells    = new ArrayList<>(r.getCellList().getCellCollection());
         Collections.shuffle(cells);
 

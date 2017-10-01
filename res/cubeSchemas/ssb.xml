@@ -13,8 +13,8 @@
         </Level>
         <Level name="CITY" visible="true" column="c_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
-        <Level name="NAME" visible="true" column="c_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
-        </Level>
+        <!--<Level name="NAME" visible="true" column="c_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>-->
       </Hierarchy>
     </Dimension>
     <Dimension type="StandardDimension" visible="true" foreignKey="lo_suppkey" highCardinality="false" name="SUPPLIER">
@@ -27,8 +27,8 @@
         </Level>
         <Level name="CITY" visible="true" column="s_city" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
         </Level>
-        <Level name="NAME" visible="true" column="s_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
-        </Level>
+        <!--<Level name="NAME" visible="true" column="s_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>-->
       </Hierarchy>
     </Dimension>
     <Dimension type="StandardDimension" visible="true" foreignKey="lo_partkey" highCardinality="false" name="PART">

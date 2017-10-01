@@ -193,6 +193,8 @@ public class SUT_Evaluator implements I_Evaluator {
 
         // computes the focus zone which is made of the coverage zones
         tr.computeFocusZone(this.benchmarkEngine.getFocusDetector());
+        System.out.println("FOCUS ZONE");
+        System.out.println(tr.getFocusZoneList().get(0).getCellList());
         
         User u              = arg_task.getUser();
         
@@ -311,6 +313,7 @@ public class SUT_Evaluator implements I_Evaluator {
         // check if at least one cell in arg_queryList is in the focus zone
         for(Query q_tmp : arg_queryList) {
             for(EAB_Cell c_tmp : q_tmp.getResult().getCellList().getCellCollection()) {
+                System.out.println("Searched cell: " + c_tmp);
                 if(focusZone.getCellList().contains(c_tmp)) {
                     return true;
                 }

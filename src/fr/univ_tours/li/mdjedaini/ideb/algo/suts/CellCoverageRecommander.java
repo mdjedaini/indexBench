@@ -47,7 +47,7 @@ public class CellCoverageRecommander implements I_SUT {
      * 
      */
     private void init() {
-        Query currentQuery  = this.tb.getCurrentSession().getLastQuery();
+        Query currentQuery  = this.tb.getCurrentSession().getQueryByPosition(0);
         EAB_Cell cell       = currentQuery.getResult().getCellList().getCellCollection().iterator().next();
         
         AbstractDiscovery ad    = new DiscoveryAsCellWithOlapNeighbors(cell);

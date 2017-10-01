@@ -23,54 +23,54 @@ import java.util.List;
  */
 public class CubeloadGenerator implements I_LogGenerator {
     
-    BenchmarkEngine be;
+    private BenchmarkEngine be;
             
     /**
      *
      */
-    public String schemaFilePath;
+    private String schemaFilePath;
 
     /**
      *
      */
-    public String profileFilePath;
+    private String profileFilePath;
 
     /**
      *
      */
-    public String dataDirectoryPath;
+    private String dataDirectoryPath;
     
     /**
      *
      */
-    public String cubeName;
+    private String cubeName;
     
     // todo try to add profile parameters here instead of having them in a file...
 
     /**
      *
      */
-    public Integer numberOfProfiles; // Number of profiles to be generated.
+    private Integer numberOfProfiles; // Number of profiles to be generated.
 
     /**
      *
      */
-    public Integer maxMeasures; // Maximum number of measures in a query
+    private Integer maxMeasures; // Maximum number of measures in a query
 
     /**
      *
      */
-    public Integer minReportSize; // Minimum size of the report for starting queries.
+    private Integer minReportSize; // Minimum size of the report for starting queries.
 
     /**
      *
      */
-    public Integer maxReportSize; // Maximum size of the report for starting queries.
+    private Integer maxReportSize; // Maximum size of the report for starting queries.
 
     /**
      *
      */
-    public Integer numberOfSurprisingQueries; // Number of surprising queries.
+    private Integer numberOfSurprisingQueries; // Number of surprising queries.
 
     /**
      * 
@@ -130,5 +130,87 @@ public class CubeloadGenerator implements I_LogGenerator {
         
         return log;
     }
+
+    public BenchmarkEngine getBe() {
+        return be;
+    }
+
+    public void setBe(BenchmarkEngine be) {
+        this.be = be;
+    }
+
+    public String getSchemaFilePath() {
+        return schemaFilePath;
+    }
+
+    public void setSchemaFilePath(String schemaFilePath) {
+        this.schemaFilePath = schemaFilePath;
+    }
+
+    public String getProfileFilePath() {
+        return profileFilePath;
+    }
+
+    public void setProfileFilePath(String profileFilePath) {
+        this.profileFilePath = profileFilePath;
+    }
+
+    public String getDataDirectoryPath() {
+        return dataDirectoryPath;
+    }
+
+    public void setDataDirectoryPath(String dataDirectoryPath) {
+        this.dataDirectoryPath = dataDirectoryPath;
+    }
+
+    public String getCubeName() {
+        return cubeName;
+    }
+
+    public void setCubeName(String cubeName) {
+        this.cubeName = cubeName;
+    }
+
+    public Integer getNumberOfProfiles() {
+        return numberOfProfiles;
+    }
+
+    public void setNumberOfProfiles(Integer numberOfProfiles) {
+        this.numberOfProfiles = numberOfProfiles;
+    }
+
+    public Integer getMaxMeasures() {
+        return maxMeasures;
+    }
+
+    public void setMaxMeasures(Integer maxMeasures) {
+        this.maxMeasures = maxMeasures;
+    }
+
+    public Integer getMinReportSize() {
+        return minReportSize;
+    }
+
+    public void setMinReportSize(Integer minReportSize) {
+        this.minReportSize = minReportSize;
+    }
+
+    public Integer getMaxReportSize() {
+        return maxReportSize;
+    }
+
+    public void setMaxReportSize(Integer maxReportSize) {
+        this.maxReportSize = maxReportSize;
+    }
+
+    public Integer getNumberOfSurprisingQueries() {
+        return numberOfSurprisingQueries;
+    }
+
+    public void setNumberOfSurprisingQueries(Integer numberOfSurprisingQueries) {
+        this.numberOfSurprisingQueries = numberOfSurprisingQueries;
+    }
+ 
+    
     
 }

@@ -45,12 +45,12 @@ public class TestCubeLoad {
         CubeloadGenerator cg    = new CubeloadGenerator(be);
         
         //cg.schemaFilePath       = "cubeload/ssb_for_cubeload/schema.xml";
-        cg.schemaFilePath       = "cubeload/ssb_for_cubeload/schema_focus.xml";
-        cg.profileFilePath      = "cubeload/ssb_for_cubeload/profile.xml";
-        cg.dataDirectoryPath    = "cubeload/ssb_for_cubeload/";
+        cg.setSchemaFilePath("cubeload/ssb_for_cubeload/schema_focus.xml");
+        cg.setProfileFilePath("cubeload/ssb_for_cubeload/profile.xml");
+        cg.setDataDirectoryPath("cubeload/ssb_for_cubeload/");
         
-        cg.minReportSize        = 1;
-        cg.maxReportSize        = 2;
+        cg.setMinReportSize((Integer) 1);
+        cg.setMaxReportSize((Integer) 2);
         
         Log l_tmp   = cg.generateLog();
         
