@@ -87,7 +87,9 @@ public class MetricDispersion extends Metric {
                 
             }
             
-            result.queryScoreList.set(i, cd.doubleValue());
+            Double dispersion   = 1 - cd.doubleValue();
+            
+            result.queryScoreList.set(i, dispersion);
             
         }
         
