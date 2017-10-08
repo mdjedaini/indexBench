@@ -26,8 +26,8 @@ public class MetricUserEngagementSecondary extends Metric {
      */
     public MetricUserEngagementSecondary(BenchmarkEngine arg_be) {
         super(arg_be);
-        //this.metric     = new MetricClickDepth(arg_be);
-        this.metric     = new MetricDispersion(arg_be);
+        this.metric     = new MetricClickDepth(arg_be);
+//        this.metric     = new MetricDispersion(arg_be);
     }
     
     /**

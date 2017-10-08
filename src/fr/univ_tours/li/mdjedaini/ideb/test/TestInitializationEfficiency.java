@@ -50,6 +50,10 @@ public class TestInitializationEfficiency {
         nbUsers.add(8);
         nbUsers.add(9);
         nbUsers.add(10);
+        nbUsers.add(15);
+        nbUsers.add(20);
+        nbUsers.add(25);
+        //nbUsers.add(50);
         //nbUsers.add(50);
         
         //profiles.add("res/forCubeload/ssb/profile-10-sessions.xml");
@@ -61,10 +65,9 @@ public class TestInitializationEfficiency {
         String output   = "";
         
         output  += "nbSessions,nbUsers,timeSessions,timeUsers";
-                
+        
         for(String profile : profiles) {
             
-            for(Integer nbUsers_tmp : nbUsers) {
                 BenchmarkEngine be  = new BenchmarkEngine(params);
                 
                 be.initDefaultModules();
@@ -83,26 +86,30 @@ public class TestInitializationEfficiency {
                 cg.setMaxReportSize((Integer) 2);
                 
                 be.setLogLoader(new CubeloadLogLoader(cg));
-                params.setNbOfUsers(nbUsers_tmp);
 
                 Long time_a = System.currentTimeMillis();
-                
                 be.initLog();
-                
                 Long time_b = System.currentTimeMillis();
+                Long logGenTime  = (time_b - time_a);
                 
-                be.initUsers();
-                Long time_c = System.currentTimeMillis();
+                for(Integer nbUsers_tmp : nbUsers) {
+                    params.setNbOfUsers(nbUsers_tmp);
                 
-                output  += System.lineSeparator();
-                output  += profile + "," + nbUsers_tmp + "," + (time_b - time_a) + "," + (time_c - time_b);
+                    System.out.println("Generating " + nbUsers_tmp + " users...");
+                    
+                    Long time_c = System.currentTimeMillis();
+                    be.initUsers();
+                    Long time_d = System.currentTimeMillis();
+                
+                    output  += System.lineSeparator();
+                    output  += profile + "," + nbUsers_tmp + "," + logGenTime + "," + (time_d - time_c);
+                }
                 
                 System.out.println("output:");
                 System.out.println(output);
                 
                 //Log l_tmp   = cg.generateLog();
             }
-        }
         
         System.out.println("Report on initialization");
         System.out.println(output);

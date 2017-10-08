@@ -111,8 +111,8 @@ public class MetricMLContribution extends Metric {
         MetricScore result  = new MetricScore(this, arg_tr);
 
         Map<Metric, MetricScore> resultPerMetric    = new HashMap<>();
-        
-        // we compute the descriptors for each explorations (for each queries in each explorations)
+              
+        // we compute the descriptors for each exploration (for each queries in each explorations)
         for(Metric m_tmp : featureWeight.keySet()) {
             MetricScore ms_tmp  = m_tmp.apply(arg_tr);
             resultPerMetric.put(m_tmp, ms_tmp);

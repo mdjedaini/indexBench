@@ -732,6 +732,7 @@ public class QueryTriplet extends Query implements java.io.Serializable {
      * 
      * @return 
      */
+    @Override
     public String toString() {
         String result   = "";
         
