@@ -313,7 +313,7 @@ public class SUT_Evaluator implements I_Evaluator {
         // check if at least one cell in arg_queryList is in the focus zone
         for(Query q_tmp : arg_queryList) {
             for(EAB_Cell c_tmp : q_tmp.getResult().getCellList().getCellCollection()) {
-                System.out.println("Searched cell: " + c_tmp);
+                //System.out.println("Searched cell: " + c_tmp);
                 if(focusZone.getCellList().contains(c_tmp)) {
                     return true;
                 }

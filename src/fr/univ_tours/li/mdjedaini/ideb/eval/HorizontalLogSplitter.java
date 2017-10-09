@@ -41,7 +41,7 @@ public class HorizontalLogSplitter implements I_LogSplitter {
         
         for(Session s_tmp : arg_log.getSessionList()) {
             Random rg                   = new Random();
-            Double hiddenProbability    = 0.10;
+            Double hiddenProbability    = 0.25;
 
             // we hide a session based on a probability
             if(rg.nextDouble() < hiddenProbability) {

@@ -123,8 +123,6 @@ public class UserModelMarkov extends UserModel {
         boolean playedFromGraph = false;
         
         if(arg_tb.getCurrentSession().getNumberOfQueries() > 0) {
-
-            System.out.println("Current session is empty");
             
             Query currentQuery      = arg_tb.getCurrentSession().getLastQuery();
         
@@ -198,6 +196,8 @@ public class UserModelMarkov extends UserModel {
         if(!successors.isEmpty()) {
             result.add(successors.get(0));
         }
+        
+        System.out.println("I played from graph!");
         
         return result;
         

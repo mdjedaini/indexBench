@@ -138,14 +138,14 @@ public class XMLLogLoader implements I_LogLoader {
                 QueryTriplet qt = this.loadQuery(query);
                 
                 Integer numberOfCells   = qt.computeNumberOfCells();
-                s.addQuery(qt);
+                //s.addQuery(qt);
                 
-//                // @todo only add
-//                if(numberOfCells < this.querySizeLimit) {
-//                    s.addQuery(qt);
-//                } else {
-//                    System.out.println(arg_sessionElement.getAttribute("template") + " - Query too big! " + numberOfCells + " cells");
-//                }
+                // @todo only add
+                if(numberOfCells < this.querySizeLimit) {
+                    s.addQuery(qt);
+                } else {
+                    System.out.println(arg_sessionElement.getAttribute("template") + " - Query too big! " + numberOfCells + " cells");
+                }
             }
             
         }	
