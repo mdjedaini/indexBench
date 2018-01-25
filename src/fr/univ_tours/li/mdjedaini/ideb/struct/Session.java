@@ -426,15 +426,15 @@ public class Session {
         summary += System.getProperty("line.separator");
         
         int i = 0;
-        for(Query q : this.getQueryList()) {
-            summary += "TS Before: " + this.timeBeforeQueryExecutionList.get(i);
-            summary += System.getProperty("line.separator");
-            summary += "TS After: " + this.timeAfterQueryExecutionList.get(i);
-            summary += System.getProperty("line.separator");
-            summary += q.toString();
-            summary += System.getProperty("line.separator");
-            i++;
-        }
+//        for(Query q : this.getQueryList()) {
+//            summary += "TS Before: " + this.timeBeforeQueryExecutionList.get(i);
+//            summary += System.getProperty("line.separator");
+//            summary += "TS After: " + this.timeAfterQueryExecutionList.get(i);
+//            summary += System.getProperty("line.separator");
+//            summary += q.toString();
+//            summary += System.getProperty("line.separator");
+//            i++;
+//        }
         
         summary += "End Of Session #" + this.sid;
         

@@ -5,7 +5,7 @@
  */
 package fr.univ_tours.li.mdjedaini.ideb.examples;
 
-import fr.univ_tours.li.mdjedaini.ideb.local.*;
+//import fr.univ_tours.li.mdjedaini.ideb.local.*;
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.algo.DistanceBasedFocusDetection;
 import fr.univ_tours.li.mdjedaini.ideb.algo.FocusOnFirstQuery;
@@ -84,22 +84,22 @@ public class TestEvaluation {
         es.addMetric(new MetricRelevantNewInformation(be));
         
         // pick a random session from the log and execute it
-        SaikuLogLoader  sll = new SaikuLogLoader(be, arg_logFile);
-            
-        Log myLog           = sll.loadLog();
-        System.out.println(myLog);
-            
-        // execute the log and store results...
-        //myLog.execute(Boolean.TRUE);
-            
-        for(Session s_tmp : myLog.getSessionList()) {
-            Exploration e   = new Exploration(be, s_tmp);
-                
-            ExplorationScore trs = es.score(e);
-                
-            System.out.println("Session: " + s_tmp.getMetadata("name"));
-            System.out.println(trs);
-        }
+//        SaikuLogLoader  sll = new SaikuLogLoader(be, arg_logFile);
+//            
+//        Log myLog           = sll.loadLog();
+//        System.out.println(myLog);
+//            
+//        // execute the log and store results...
+//        //myLog.execute(Boolean.TRUE);
+//            
+//        for(Session s_tmp : myLog.getSessionList()) {
+//            Exploration e   = new Exploration(be, s_tmp);
+//                
+//            ExplorationScore trs = es.score(e);
+//                
+//            System.out.println("Session: " + s_tmp.getMetadata("name"));
+//            System.out.println(trs);
+//        }
         
     }
     

@@ -325,12 +325,41 @@ public class EAB_Cube {
     }
     
     /**
+     * Retrieves the level of the cube matching this simple name.
+     * The name provided as an argument should be given without the level ancestors,
+     * meaning that it must not contain the hierarchy, dimension, ...
+     * @param arg_levelName
+     * @return 
+     */
+    public EAB_Level getLevelByAtomicName(String arg_levelName) {
+        
+        for(String levelFullName : this.cubeLevelList.keySet()) {
+            
+            // if the level name matches the full name
+            if(levelFullName.contains("[" + arg_levelName + "]")) {
+                return this.getLevelByName(levelFullName);
+            }
+            
+        }
+        
+        return null;
+    }
+    
+    /**
      * 
      * @param arg_levelName
      * @return 
      */
     public EAB_Level getLevelByName(String arg_levelName) {
         return this.cubeLevelList.get(arg_levelName);
+    }
+    
+    /**
+     * Retrieves the set of levels for the current cube.
+     * @return 
+     */
+    public Set<EAB_Level> getLevelList() {
+        return new HashSet<>(this.cubeLevelList.values());
     }
     
     /**

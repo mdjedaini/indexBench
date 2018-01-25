@@ -6,6 +6,7 @@
 package fr.univ_tours.li.mdjedaini.ideb.olap;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import mondrian.olap.Hierarchy;
@@ -33,7 +34,15 @@ public class EAB_Hierarchy {
         this.mondrianHierarchy  = arg_mondrianHierarchy;        
         this.dimension          = arg_dimension;
         
-        this.name       = arg_mondrianHierarchy.getName();
+        List<String> items = Arrays.asList(arg_mondrianHierarchy.getName().split("\\s*\\.\\s*"));
+        
+        // if its a measure, the size is 1
+        if(items.size() == 1) {
+            this.name       = items.get(0);
+        } else {
+            this.name       = items.get(1);
+        }
+        
         this.uniqueName = "[" + arg_mondrianHierarchy.getName() + "]";
     }
     
