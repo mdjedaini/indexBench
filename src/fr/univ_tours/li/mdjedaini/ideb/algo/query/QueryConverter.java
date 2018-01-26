@@ -53,8 +53,8 @@ public class QueryConverter {
             if(qt.getOriginalQuery() != null) {
                 return (QueryMdx)qt.getOriginalQuery();
             } else {
-                //return (QueryMdx)ttmqc.convert(arg_q);
-                return this.convertToMdxWithFalseto((QueryTriplet)arg_q);
+                return (QueryMdx)ttmqc.convert(arg_q);
+                //return this.convertToMdxWithFalseto((QueryTriplet)arg_q);
             }
         }
         
@@ -267,8 +267,11 @@ public class QueryConverter {
      public QueryMdx convertToMdxWithFalseto(QueryTriplet arg_q) {
 
         FalsetoQueryConverter fqc   = new FalsetoQueryConverter(arg_q.getCube().getBencharkEngine());
+
+        // Falseto will now create the mdx query using the correct cube, updated above
+        String mdxStringFromFalseto  = fqc.convertQuery(arg_q).toMDX().toString();
         
-        QueryMdx result = new QueryMdx(arg_q.getCube(), fqc.convertQuery(arg_q).toMDX().toString());
+        QueryMdx result = new QueryMdx(arg_q.getCube(), mdxStringFromFalseto);
         
         return result;
         

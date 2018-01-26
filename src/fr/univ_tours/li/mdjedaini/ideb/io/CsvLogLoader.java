@@ -6,10 +6,12 @@
 package fr.univ_tours.li.mdjedaini.ideb.io;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
+import fr.univ_tours.li.mdjedaini.ideb.algo.query.QueryConverter;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.ProjectionFragment;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryMdx;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.QueryTriplet;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.SelectionFragment;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
@@ -110,7 +112,7 @@ public class CsvLogLoader implements I_LogLoader {
             // each record is a query
             for (CSVRecord record : records) {
                 
-                System.out.println("I am parsing the line: " + record);
+//                System.out.println("I am parsing the line: " + record);
                 
                 String cubeName = record.get("cube");
                 EAB_Cube cube   = this.be.getBenchmarkData().getInternalCubeList().get(cubeName);
@@ -129,7 +131,7 @@ public class CsvLogLoader implements I_LogLoader {
                     while(m.find()) {
                         //System.out.println("Current measure: " + currentMeasure + " --- trouve: " + m.groupCount());
                         String measure  = m.group(1);
-                        System.out.println("Measure: " + measure);    
+//                        System.out.println("Measure: " + measure);    
                         
                         // add the current measure to the current query
                         MeasureFragment mf  = new MeasureFragment(q_tmp, measure);
@@ -148,14 +150,14 @@ public class CsvLogLoader implements I_LogLoader {
                 
                 // only add projections if not empty
                 if(!currentProjection.equals("[]")) {
-                    Pattern p   = Pattern.compile("\\[([a-zA-Z_0-9 ]+)\\]");
+                    Pattern p   = Pattern.compile("([a-zA-Z_0-9][a-zA-Z_0-9 ]+)");
                     Matcher m   = p.matcher(currentProjection);
                     
                     // manage multiple group by
                     while(m.find()) {
                         //System.out.println("Group " + i + ": " + m.group(i));
                         String level    = m.group(1);
-                        System.out.println("Level: " + level);
+//                        System.out.println("Level: " + level);
                         
                         EAB_Level l_tmp = cube.getLevelByAtomicName(level);
                         ProjectionFragment pf_tmp   = new ProjectionFragment(q_tmp, l_tmp);
@@ -178,17 +180,16 @@ public class CsvLogLoader implements I_LogLoader {
                     
                     // manage multiple occurrences
                     while(m.find()) {
-                        System.out.println("Current selection: " + currentSelection + " --- trouve: " + m.groupCount());
+//                        System.out.println("Current selection: " + currentSelection + " --- trouve: " + m.groupCount());
                         
                         String level    = m.group(1);
                         String member   = m.group(2);
                         
                         EAB_Level l_tmp = cube.getLevelByAtomicName(level);
-                        ProjectionFragment pf_tmp   = new ProjectionFragment(q_tmp, l_tmp);
                         
-                        System.out.println("Cube: " + cubeName);
-                        System.out.println("Level: " + level);
-                        System.out.println("Member: " + member);
+//                        System.out.println("Cube: " + cubeName);
+//                        System.out.println("Level: " + level);
+//                        System.out.println("Member: " + member);
                         
                         if(null == l_tmp) {
                             int i = 2;
@@ -212,6 +213,34 @@ public class CsvLogLoader implements I_LogLoader {
                 
                 // add the query to the session
                 result.addQuery(q_tmp);
+                
+                QueryConverter qc   = new QueryConverter(this.be);
+                
+                
+                try{
+                    QueryMdx q_mdx  = qc.toMdx(q_tmp);
+                    System.out.println("MDX with my converter:");
+                    System.out.println(q_mdx);
+                    q_mdx.execute(Boolean.TRUE);
+//                    System.out.println("******************");
+//                    System.out.println("Record:" + record);
+//                    System.out.println("-----");
+//                    System.out.println("Query: " + q_tmp);
+//                    System.out.println("-----");
+//                    System.out.println("Mdx: " + qc.toMdx(q_tmp));
+//                    System.out.println("******************");
+                } catch(Exception arg_e) {
+                    System.out.println("******************");
+                    System.out.println("Exception: " + arg_e.getClass().getName());
+                    System.out.println("Record:" + record);
+//                    System.out.println("-----");
+//                    System.out.println("Query: " + q_tmp);
+//                    System.out.println("-----");
+                    qc.toMdx(q_tmp);
+                    System.out.println("******************");
+                    //System.err.println("Exception avec: ");
+                    //System.err.println("Record: " + record);
+                }
                 
             } // end foreach record
             

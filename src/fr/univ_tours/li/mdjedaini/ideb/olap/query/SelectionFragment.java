@@ -117,7 +117,10 @@ public class SelectionFragment extends Fragment {
      */
     @Override
     public int hashCode() {
-        return this.getMemberValue().hashCode();
+        if(null != this.getMemberValue()) {
+            return this.getMemberValue().hashCode();
+        }
+        return 0;
     }
 
     /**
@@ -133,7 +136,8 @@ public class SelectionFragment extends Fragment {
         
         final SelectionFragment other = (SelectionFragment) obj;
         
-        return this.getMemberValue().equals(other.getMemberValue());
+        // they are equal if they are not null and if they are the same
+        return (this.getMemberValue() != null) && (other.getMemberValue() != null) && (this.getMemberValue().equals(other.getMemberValue()));
     }
     
     

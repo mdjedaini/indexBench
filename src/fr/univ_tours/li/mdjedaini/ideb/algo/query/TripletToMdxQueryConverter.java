@@ -7,6 +7,7 @@ package fr.univ_tours.li.mdjedaini.ideb.algo.query;
 
 import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Cube;
+import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Hierarchy;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Level;
 import fr.univ_tours.li.mdjedaini.ideb.olap.EAB_Measure;
 import fr.univ_tours.li.mdjedaini.ideb.olap.query.MeasureFragment;
@@ -90,7 +91,7 @@ public class TripletToMdxQueryConverter implements I_QueryConverter {
         
         // WHERE CLAUSE
         if(!sf_list.isEmpty()) {
-            where   += "WHERE {( ";
+            where   += "{(";
             for(int i = 0; i < sf_list.size(); i++) {
                 where += sf_list.get(i).getMemberValue().getUniqueName();
                 if(i + 1 < sf_list.size()) where += ", ";
@@ -186,8 +187,19 @@ public class TripletToMdxQueryConverter implements I_QueryConverter {
             
             // to correct!
             case 0:
-                mdxRows += "{[COMMIT_TIME].[ALLCOMMIT_TIME].Members} ";
-                mdxRows += "";
+                // put a random hierarchy All member as a patch
+                // @todo correct that and put the global All member!!!
+                
+                EAB_Hierarchy h_tmp = arg_qt.getCube().getRandomHierarchy();
+                
+                // we need a hierarchy without selection for avoiding Mondrian errors!
+                while(!arg_qt.getSelectionFragmentByHierarchy(h_tmp).isEmpty()) {
+                    h_tmp = arg_qt.getCube().getRandomHierarchy();
+                }
+                
+                mdxRows += "{";
+                mdxRows += h_tmp.getAllLevel().getLevelMembers().get(0).getUniqueName();
+                mdxRows += "} ";
                 break;
                 
             case 1:

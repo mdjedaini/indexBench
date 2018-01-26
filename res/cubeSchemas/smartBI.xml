@@ -1,4 +1,4 @@
-<Schema name="New Schema1">
+<Schema name="smartBI">
   <Cube name="Airports" visible="true" cache="true" enabled="true">
     <Table name="FACT_AIRPORTS">
     </Table>

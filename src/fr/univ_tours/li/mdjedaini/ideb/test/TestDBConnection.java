@@ -9,6 +9,7 @@ import fr.univ_tours.li.mdjedaini.ideb.BenchmarkEngine;
 import fr.univ_tours.li.mdjedaini.ideb.infrastructure.MonetDB;
 import fr.univ_tours.li.mdjedaini.ideb.io.CsvLogLoader;
 import fr.univ_tours.li.mdjedaini.ideb.io.SimpleLogLoader;
+import fr.univ_tours.li.mdjedaini.ideb.olap.query.Query;
 import fr.univ_tours.li.mdjedaini.ideb.params.Parameters;
 import fr.univ_tours.li.mdjedaini.ideb.struct.Log;
 
@@ -74,8 +75,15 @@ public class TestDBConnection {
         be.initDatasource();
         
         CsvLogLoader sll = new CsvLogLoader(be, "/home/mahfoud/Desktop/IS_ADBIS/logs");
-//        CsvLogLoader sll = new CsvLogLoader(be, "/home/mahfoud/Desktop/IS_ADBIS/logs/user-a_session-3C604A43A349CDC4130E5F83A8625EE6C83A2283F66A05BD44300AE9E67250DE.csv");
+//        CsvLogLoader sll = new CsvLogLoader(be, "/home/mahfoud/Desktop/IS_ADBIS/logs/debug_user-I050648_session-B34FE261C41F1CECA723A22B5D5BB74C4AC140931465D2DA8F3A7033ABC96D46.csv");
         Log l   = sll.loadLog();
+        
+        //l.execute(Boolean.FALSE);
+        
+        for(Query q_tmp : l.getQueryList()) {
+            System.out.println("Query");
+            System.out.println(q_tmp);
+        }
         
         System.out.println(l);
         

@@ -70,6 +70,8 @@ public class FalsetoQueryConverter {
         QueryTriplet arg_qt = (QueryTriplet)arg_q;
         
         Qfset result    = new Qfset();
+        result.cubeName = arg_qt.getCube().getName();
+        result.cube     = arg_qt.getCube().getMondrianCube();
         
         for(MeasureFragment mf_tmp : arg_qt.getMeasures()) {
             result.addMeasure(mf_tmp.getMeasure().getMondrianMeasure());
@@ -77,9 +79,10 @@ public class FalsetoQueryConverter {
         
         // ! only add prjections different than All ! \\
         for(ProjectionFragment pf_tmp : arg_qt.getProjectionFragments()) {
-            //if(!pf_tmp.getLevel().isAllLevel()) {
+            // Falseto Qfset doesnt like the all level projections
+//            if(!pf_tmp.getLevel().isAllLevel()) {
                 result.addProjection(pf_tmp.getLevel().getMondrianLevel());
-            //}
+//            }
         }
         
         for(SelectionFragment sf_tmp : arg_qt.getSelectionFragments()) {
