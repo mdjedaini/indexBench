@@ -218,12 +218,13 @@ public class CsvLogLoader implements I_LogLoader {
                 
                 
                 try{
+                    System.out.println("******************");
+                    System.out.println("Record:" + record);
+
                     QueryMdx q_mdx  = qc.toMdx(q_tmp);
                     System.out.println("MDX with my converter:");
                     System.out.println(q_mdx);
                     q_mdx.execute(Boolean.TRUE);
-//                    System.out.println("******************");
-//                    System.out.println("Record:" + record);
 //                    System.out.println("-----");
 //                    System.out.println("Query: " + q_tmp);
 //                    System.out.println("-----");
@@ -236,8 +237,8 @@ public class CsvLogLoader implements I_LogLoader {
 //                    System.out.println("-----");
 //                    System.out.println("Query: " + q_tmp);
 //                    System.out.println("-----");
-                    qc.toMdx(q_tmp);
-                    System.out.println("******************");
+                    //qc.toMdx(q_tmp);
+                    //System.out.println("******************");
                     //System.err.println("Exception avec: ");
                     //System.err.println("Record: " + record);
                 }

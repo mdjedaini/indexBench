@@ -190,15 +190,15 @@ public class TripletToMdxQueryConverter implements I_QueryConverter {
                 // put a random hierarchy All member as a patch
                 // @todo correct that and put the global All member!!!
                 
-                EAB_Hierarchy h_tmp = arg_qt.getCube().getRandomHierarchy();
-                
-                // we need a hierarchy without selection for avoiding Mondrian errors!
-                while(!arg_qt.getSelectionFragmentByHierarchy(h_tmp).isEmpty()) {
-                    h_tmp = arg_qt.getCube().getRandomHierarchy();
-                }
+//                EAB_Hierarchy h_tmp = arg_qt.getCube().getRandomHierarchy();
+//                
+//                // we need a hierarchy without selection for avoiding Mondrian errors!
+//                while(!arg_qt.getSelectionFragmentByHierarchy(h_tmp).isEmpty()) {
+//                    h_tmp = arg_qt.getCube().getRandomHierarchy();
+//                }
                 
                 mdxRows += "{";
-                mdxRows += h_tmp.getAllLevel().getLevelMembers().get(0).getUniqueName();
+                //mdxRows += h_tmp.getAllLevel().getLevelMembers().get(0).getUniqueName();
                 mdxRows += "} ";
                 break;
                 
